@@ -1,11 +1,22 @@
-import Characters from '@/components/Characters'
-import styles from './page.module.css'
+import { CharactersModel } from "@/app/models/CharactersModel.js";
+import CharacterCard from "@/components/CharacterCard/index.js";
 
-export default function Home() {
+import Logo from "@/components/Logo";
+import styles from './page.module.css';
+
+const getCharactersData = async () => await CharactersModel.getAll();
+
+export default async function Home() {
+  const characters = await getCharactersData();
 
   return (
     <main className={styles.main}>
-      <Characters />
+      {/* <Logo /> */}
+      <div className={styles.characters_container}>
+        {characters.map((character) => (
+          <CharacterCard data={character} key={character.name} />
+        ))}
+      </div>
     </main>
   )
 }
