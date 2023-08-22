@@ -11,7 +11,9 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
-      {/* <Logo /> */}
+      <div className={styles.logo}>
+        <Logo />
+      </div>
       <div className={styles.characters_container}>
         {characters.map((character) => (
           <CharacterCard data={character} key={character.name} />
