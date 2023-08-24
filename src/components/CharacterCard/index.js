@@ -1,16 +1,17 @@
 'use client'
 
-import styles from './styles.module.css';
+import Link from 'next/link';
+import styles from './styles.module.scss';
 
 export default function CharacterCard({ data }) {
-    console.log(data)
-
     return (
-        <div className={styles.character_card}>
-            <img loading='lazy' src={data.image} alt="" />
-            <div className={styles.character_details}>
-                <h4>{data.name}</h4>
+        <Link href={`/character/${data.id}`}>
+            <div className={styles.character_card}>
+                <img src={data.image} alt="" />
+                <div className={styles.character_details}>
+                    <h4>{data.name}</h4>
+                </div>
             </div>
-        </div>
-    )
-}
+        </Link>
+    );
+};
