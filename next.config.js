@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = () => {
+    console.log('Loading Config')
+    return {
+        images: {
+            remotePatterns: [
+                {
+                    protocol: 'https',
+                    hostname: 'api.genshin.dev',
+                },
+            ],
+        },
+    }
+}
 
-export default nextConfig
+module.exports = nextConfig
+// export default nextConfig
