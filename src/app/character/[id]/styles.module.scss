@@ -1,0 +1,18 @@
+.main {
+    inset: 0;
+    position: absolute;
+    max-height: 100vh;
+    overflow-y: auto;
+
+    h2,
+    h4,
+    p {
+        font-weight: 400;
+        font-family: 'Do Hyeon', sans-serif;
+    }
+
+    img {
+        width: 450px;
+        height: 800px;
+    }
+}

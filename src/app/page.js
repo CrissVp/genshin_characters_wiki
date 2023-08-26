@@ -10,15 +10,20 @@ export default async function Home() {
   const characters = await getCharactersData();
 
   return (
-    <main className={styles.main}>
-      <div className={styles.logo}>
-        <Logo />
-      </div>
-      <div className={styles.characters_container}>
-        {characters.map((character) => (
-          <CharacterCard data={character} key={character.id} />
-        ))}
-      </div>
-    </main>
+    <>
+      <div className={styles.background}></div>
+      <main className={styles.main}>
+        <section>
+          <div className={styles.logo}>
+            <Logo />
+          </div>
+          <div className={styles.characters_container}>
+            {characters.map((character) => (
+              <CharacterCard data={character} key={character.id} />
+            ))}
+          </div>
+        </section>
+      </main>
+    </>
   )
 }

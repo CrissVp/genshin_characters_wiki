@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 export default function CharacterCard({ data }) {
     return (
-        <Link href={`/character/${data.id}`}>
+        <Link href={`/character/${data.id}`} target='_blank'>
             <div className={styles.character_card}>
                 <Image src={data.image} alt={`${data.id}_picture`} height={350} width={200} />
                 <div className={styles.character_details}>
