@@ -6,28 +6,51 @@ import styles from './styles.module.scss';
 
 const getCharacterData = async (id) => await CharactersModel.getData(id);
 
-const CharacterImage = ({ src, alt, w, h }) => {
-    return <Image src={src} width={w} height={h} alt={alt} />
-};
-
 export default async function Character({ params }) {
-    const characterData = await getCharacterData(params.id);
+    const { data, images } = await getCharacterData(params.id);
 
     return (
         <>
-            <ElementalBackground bg={characterData.data.vision.toLowerCase()} />
+            <ElementalBackground bg={data.vision.toLowerCase()} />
             <main className={styles.main}>
-                <CharacterImage src={characterData.images.card} alt={`${characterData.data.name}_picture`} h={800} w={450} />
-                <h1>{characterData.data.name}</h1>
-                <h2>{characterData.data.title}</h2>
-                <h4>{characterData.data.vision}</h4>
-                <h4>{characterData.data.weapon}</h4>
-                <h4>{characterData.data.nation}</h4>
-                <h4>{characterData.data.affiliation}</h4>
-                <h4>{characterData.data.rarity}</h4>
-                <h4>{characterData.data.constellation}</h4>
-                <h4>{characterData.data.birthday}</h4>
-                <p>{characterData.data.description}</p>
+                <div className={styles.content}>
+                    <section>
+                        <div className={styles.character_info}>
+                            <div className={styles.character_name}>
+                                <div className={styles.character_icon}>
+                                    <Image alt={'character_icon'} height={50} width={50} src={images["icon-big"]} />
+                                </div>
+                                <span>{data.name}</span>
+                                <div className={styles.character_vision}>
+                                    <Image src={images.vision} width={50} height={50} alt={'character_vision'} />
+                                </div>
+                            </div>
+                            <div className={styles.character_description}>
+                                <p>{data.description}</p>
+                            </div>
+                        </div>
+                        <div className={styles.character_splash}>
+                            <Image
+                                src={images["gacha-splash"]}
+                                alt={`character_picture`}
+                                height={450}
+                                width={600}
+                                quality={80}
+                            />
+                        </div>
+                    </section>
+                    <div className={styles.details_table}>
+                        <h1>{data.name}</h1>
+                        <h2>{data.title}</h2>
+                        <h4>{data.vision}</h4>
+                        <h4>{data.weapon}</h4>
+                        <h4>{data.nation}</h4>
+                        <h4>{data.affiliation}</h4>
+                        <h4>{data.rarity}</h4>
+                        <h4>{data.constellation}</h4>
+                        <h4>{data.birthday}</h4>
+                    </div>
+                </div>
             </main>
         </>
     )

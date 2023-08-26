@@ -1,18 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
 .main {
     inset: 0;
-    position: absolute;
-    max-height: 100vh;
+    display: flex;
+    padding: 3vh 0;
     overflow-y: auto;
+    max-height: 100vh;
+    position: absolute;
+    justify-content: center;
 
-    h2,
-    h4,
-    p {
-        font-weight: 400;
-        font-family: 'Do Hyeon', sans-serif;
+    .content {
+        max-width: 1200px;
+
+        h2,
+        h4,
+        p {
+            font-weight: 400;
+            font-family: 'Do Hyeon', sans-serif;
+        }
+
+        section {
+            display: flex;
+
+            .character_info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                .character_name {
+                    gap: 10px;
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        font-size: 40px;
+                        font-family: 'Acme', sans-serif;
+                    }
+                }
+            }
+        }
+
+
+
+        .character_icon img {
+            width: 64px;
+            height: 64px;
+            border-radius: 5px 10px 5px 10px;
+            background-color: #a76c30;
+        }
+
+        .character_splash img {
+            width: 600px;
+            height: 450px;
+        }
     }
 
-    img {
-        width: 450px;
-        height: 800px;
-    }
 }
