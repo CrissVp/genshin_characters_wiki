@@ -1,3 +1,14 @@
+:root {
+  --pyro-bg: #3d1818;
+  --cryo-bg: #09375c;
+  --electro-bg: #2a1a67;
+  --geo-bg: #3d3015;
+  --hydro-bg: #15315c;
+  --anemo-bg: #153434;
+  --dendro-bg: #183d12;
+}
+
+
 * {
   box-sizing: border-box;
   padding: 0;
