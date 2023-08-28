@@ -23,26 +23,43 @@
                 flex-direction: column;
                 justify-content: center;
 
-                .character_name {
-                    gap: 10px;
-                    display: flex;
+                .character_details {
+                    display: grid;
+                    column-gap: 10px;
                     align-items: center;
+                    grid-template-columns: 64px .1fr 1fr;
+
 
                     .character_icon {
                         width: 64px;
                         height: 64px;
+                        grid-row: 1/3;
                         overflow: hidden;
                         border-radius: 5px 15px 5px 15px;
 
-                        img {
-                            width: 100%;
-                            height: 100%;
+                    }
+
+                    .character_name {
+                        span {
+                            font-size: 40px;
+                            white-space: nowrap;
                         }
                     }
 
-                    span {
-                        font-size: 40px;
+                    .character_vision {
+                        height: 30px;
+                        width: 30px;
                     }
+
+                    .characer_rarity {
+                        grid-column: 2/4;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
                 }
 
                 .character_description {

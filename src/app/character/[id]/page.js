@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import ElementalBackground from "@/components/ElementalBackground";
 import styles from './styles.module.scss';
+import StarsRarity from "@/components/StarsRarity";
 
 const getCharacterData = async (id) => await CharactersModel.getData(id);
 
@@ -16,13 +17,18 @@ export default async function Character({ params }) {
                 <div className={styles.content}>
                     <section className={styles.info_section}>
                         <div className={styles.character_info}>
-                            <div className={styles.character_name}>
+                            <div className={styles.character_details}>
                                 <div className={`${styles.character_icon} ${data.rarity === 5 ? styles.five_stars_bg : styles.four_stars_bg}`}>
-                                    <Image alt={'character_icon'} height={50} width={50} src={images["icon-big"]} />
+                                    <Image alt={'character_icon'} height={64} width={64} src={images["icon-big"]} />
                                 </div>
-                                <span>{data.name}</span>
+                                <div className={styles.character_name}>
+                                    <span>{data.name}</span>
+                                </div>
                                 <div className={styles.character_vision}>
-                                    <Image src={images.vision} width={50} height={50} alt={'character_vision'} />
+                                    <Image src={images.vision} width={30} height={30} alt={'character_vision'} />
+                                </div>
+                                <div className={styles.characer_rarity}>
+                                    <StarsRarity rarity={data.rarity} />
                                 </div>
                             </div>
                             <div className={styles.character_description}>
@@ -30,13 +36,15 @@ export default async function Character({ params }) {
                             </div>
                         </div>
                         <div className={styles.character_splash}>
-                            <Image
-                                src={images["gacha-splash"]}
-                                alt={`character_picture`}
-                                height={450}
-                                width={600}
-                                quality={80}
-                            />
+                            {images["gacha-splash"] &&
+                                <Image
+                                    src={images["gacha-splash"]}
+                                    alt={`character_picture`}
+                                    height={450}
+                                    width={600}
+                                    quality={80}
+                                />
+                            }
                         </div>
                     </section>
                     <section className={`${styles.details_table} ${styles[`bg_${data.vision.toLowerCase()}`]}`}>
