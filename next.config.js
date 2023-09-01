@@ -6,8 +6,17 @@ const nextConfig = () => {
             remotePatterns: [
                 {
                     protocol: 'https',
-                    hostname: 'api.genshin.dev',
-                },
+                    hostname: 'webstatic.hoyoverse.com',
+                }, {
+                    protocol: 'https',
+                    hostname: 'upload-os-bbs.hoyolab.com'
+                }, {
+                    protocol: 'https',
+                    hostname: 'bbs.hoyolab.com'
+                }, {
+                    protocol: 'https',
+                    hostname: 'upload-static.hoyoverse.com'
+                }
             ],
         },
     }
