@@ -4,11 +4,13 @@ import Image from "next/image";
 import ElementalBackground from "@/components/ElementalBackground";
 import StarsRarity from "@/components/StarsRarity";
 import styles from './styles.module.scss';
+import AttributesTable from "@/components/AttributesTable";
+import AscensionTable from "@/components/AscensionTable";
 
-const getCharacterData = async (id) => await CharactersModel.getData(id);
+const getCharacterData = async (id) => await CharactersModel.getDataById(id);
 
 export default async function Character({ params }) {
-    const { basicInfo, attributes } = await getCharacterData(params.id);
+    const { basicInfo, attributes, ascensionData } = await getCharacterData(params.id);
     const vision = {
         type: attributes['Vision'] ? 'Vision' : 'Gnosis',
         value: attributes['Vision'] || attributes['Gnosis']
@@ -21,14 +23,14 @@ export default async function Character({ params }) {
                     <section className={styles.info_section}>
                         <div className={styles.character_info}>
                             <div className={styles.character_details}>
-                                <div className={`${styles.character_icon} ${styles[`bg_${basicInfo.rarity}`]}`}>
+                                <div className={`${styles.character_icon} bg_${basicInfo.rarity}`}>
                                     <Image alt={'character_icon'} height={64} width={64} src={basicInfo.icon_url} />
                                 </div>
                                 <div className={styles.character_name}>
                                     <span>{basicInfo.name}</span>
                                 </div>
                                 <div className={styles.character_vision}>
-                                    {/* <Image src={images.vision} width={30} height={30} alt={'character_vision'} /> */}
+                                    <Image src={`/${vision.value.toLowerCase()}_vision.png`} width={30} height={30} alt={'character_vision'} />
                                 </div>
                                 <div className={styles.characer_rarity}>
                                     <StarsRarity rarity={Number(basicInfo.rarity.substr(0, 1))} />
@@ -48,61 +50,10 @@ export default async function Character({ params }) {
                             />
                         </div>
                     </section>
-                    <section className={`${styles.details_table} ${styles[`bg_${vision.value.toLowerCase()}`]}`}>
-                        <div className={styles.table_header}>
-                            <h4>Attributes</h4>
-                        </div>
-                        <div className={styles.table_row}>
-                            <div className={styles.table_column}>
-                                <span>Name</span>
-                                <p>{attributes['Name']}</p>
-                            </div>
-                            <div className={styles.table_column}>
-                                <span>Birthday</span>
-                                <p>{attributes['Birthday']}</p>
-                            </div>
-                        </div>
-                        <div className={styles.table_row}>
-                            <div className={styles.table_column}>
-                                <span>Constellation</span>
-                                <p>{attributes['Constellation']}</p>
-                            </div>
-                            <div className={styles.table_column}>
-                                <span>Title</span>
-                                <p>{attributes['Title']}</p>
-                            </div>
-                        </div>
-                        <div className={styles.table_row}>
-                            <div className={styles.table_column}>
-                                <span>{vision.type}</span>
-                                <p>{vision.value}</p>
-                            </div>
-                            <div className={styles.table_column}>
-                                <span>Affiliation</span>
-                                <p>{attributes['Affiliation']}</p>
-                            </div>
-                        </div>
-                        <div className={styles.table_row}>
-                            <div className={styles.table_column}>
-                                <span>Chinese VA</span>
-                                <p>{attributes['Chinese VA']}</p>
-                            </div>
-                            <div className={styles.table_column}>
-                                <span>English VA</span>
-                                <p>{attributes['English VA']}</p>
-                            </div>
-                        </div>
-                        <div className={styles.table_row}>
-                            <div className={styles.table_column}>
-                                <span>Korean VA</span>
-                                <p>{attributes['Korean VA']}</p>
-                            </div>
-                            <div className={styles.table_column}>
-                                <span>Version Released</span>
-                                <p>{attributes['Version Released']}</p>
-                            </div>
-                        </div>
-                    </section>
+                    <div className={styles.info_tables}>
+                        <AttributesTable vision={vision} attributes={attributes} />
+                        <AscensionTable vision={vision} data={ascensionData} />
+                    </div>
                 </div>
             </main>
 

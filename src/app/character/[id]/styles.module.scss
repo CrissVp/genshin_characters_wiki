@@ -96,77 +96,12 @@
                 }
             }
 
-            .details_table {
-                padding: 24px;
+            .info_tables {
+                gap: 20px;
                 display: flex;
-                border-radius: 20px;
                 flex-direction: column;
                 transform: translateY(-60px);
-
-                .table_header {
-                    margin-bottom: 24px;
-
-                    h4 {
-                        font-size: 25px;
-                        font-weight: 500;
-                        color: hsla(0, 0%, 100%, .65);
-                        font-family: 'Acme', sans-serif;
-                    }
-                }
-
-                .table_row {
-                    display: grid;
-                    padding: 10px 0;
-                    grid-template-columns: 1fr 1fr;
-                    border-bottom: 1px solid hsla(0, 0%, 100%, .04);
-                }
-
-                .table_column {
-                    display: grid;
-                    grid-template-columns: .4fr 1fr;
-
-                    span {
-                        color: hsla(0, 0%, 100%, .25);
-                    }
-                }
             }
         }
     }
-}
-
-
-.bg_pyro {
-    background-color: var(--pyro-bg);
-}
-
-.bg_hydro {
-    background-color: var(--hydro-bg);
-}
-
-.bg_cryo {
-    background-color: var(--cryo-bg);
-}
-
-.bg_geo {
-    background-color: var(--geo-bg);
-}
-
-.bg_electro {
-    background-color: var(--electro-bg);
-}
-
-.bg_anemo {
-    background-color: var(--anemo-bg);
-}
-
-.bg_dendro {
-    background-color: var(--dendro-bg);
-}
-
-.bg_5-Star {
-    background: linear-gradient(180deg, #945c2c, #b27330);
-}
-
-.bg_4-Star {
-    background: linear-gradient(180deg, #5e5789, #9c75b7);
 }

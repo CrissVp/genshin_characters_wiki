@@ -1,7 +1,8 @@
 import { createRequest, removeTags } from "../lib/utils";
+import { MaterialsModel } from "./MaterialsModel";
 
 export class CharactersModel {
-    static async getId(keyword) {
+    static async getIdByName(keyword) {
         const res = await createRequest(`https://sg-wiki-api.hoyolab.com/hoyowiki/genshin/wapi/search?keyword=${keyword}`, {
             "headers": {
                 "Referer": "https://wiki.hoyolab.com/",
@@ -23,7 +24,7 @@ export class CharactersModel {
 
         return await Promise.all(
             res.data.grid_item_list.map(async (item) => {
-                const id = await this.getId(item.title);
+                const id = await this.getIdByName(item.title);
 
                 return {
                     id: id,
@@ -39,12 +40,14 @@ export class CharactersModel {
         );
     };
 
-    static async getData(id) {
+    static async getDataById(id) {
         const res = await createRequest(`https://sg-wiki-api-static.hoyolab.com/hoyowiki/genshin/wapi/entry_page?entry_page_id=${id}`);
 
         const data = removeTags(res.data.page);
         const { name, desc, icon_url, header_img_url, filter_values: { character_rarity: { values: [rarity] } } } = data;
+
         const attributesData = formatAttributes(data.modules[0].components[0].data);
+        const ascensionData = await formatAscensionData(data.modules[1].components[0].data);
 
         return {
             basicInfo: {
@@ -55,7 +58,8 @@ export class CharactersModel {
                 icon_url,
                 header_img_url,
             },
-            attributes: attributesData
+            attributes: attributesData,
+            ascensionData,
         };
     };
 };
@@ -69,4 +73,27 @@ const formatAttributes = (data) => {
 
         return acc;
     }, {});
+};
+
+const formatAscensionData = async (data) => {
+    const fixedObj = JSON.parse(data);
+    return await Promise.all(
+        fixedObj.list.map(async (item) => {
+            const { key, combatList, materials } = item;
+            let fixedMaterials;
+
+            if (materials) {
+                fixedMaterials = await Promise.all(
+                    materials.map(async (mat) => {
+                        const matObj = JSON.parse(mat)[0];
+                        const material = await MaterialsModel.getDataById(matObj.ep_id);
+                        const { name, icon_url } = material;
+                        return { name, icon_url, amount: matObj.amount };
+                    })
+                );
+            }
+
+            return { key, combatList, materials: fixedMaterials };
+        })
+    );
 };

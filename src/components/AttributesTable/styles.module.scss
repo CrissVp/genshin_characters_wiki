@@ -1,0 +1,15 @@
+.table_row {
+    display: grid;
+    padding: 10px 0;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid hsla(0, 0%, 100%, .04);
+}
+
+.table_column {
+    display: grid;
+    grid-template-columns: .4fr 1fr;
+
+    span {
+        color: hsla(0, 0%, 100%, .25);
+    }
+}
