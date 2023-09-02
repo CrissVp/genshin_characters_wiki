@@ -9,18 +9,19 @@ const getCharacterData = async (id) => await CharactersModel.getData(id);
 
 export default async function Character({ params }) {
     const { basicInfo, attributes } = await getCharacterData(params.id);
-    const vision = { type: attributes['Vision'] ? 'Vision' : 'Gnosis', value: attributes['Vision'] || attributes['Gnosis'] }
-    console.log(attributes)
+    const vision = {
+        type: attributes['Vision'] ? 'Vision' : 'Gnosis',
+        value: attributes['Vision'] || attributes['Gnosis']
+    };
 
     return (
-        <>
-            <ElementalBackground bg={vision.value.toLowerCase()} />
+        <div className={styles.page_container}>
             <main className={styles.main}>
                 <div className={styles.content}>
                     <section className={styles.info_section}>
                         <div className={styles.character_info}>
                             <div className={styles.character_details}>
-                                <div className={`${styles.character_icon} `}>
+                                <div className={`${styles.character_icon} ${styles[`bg_${basicInfo.rarity}`]}`}>
                                     <Image alt={'character_icon'} height={64} width={64} src={basicInfo.icon_url} />
                                 </div>
                                 <div className={styles.character_name}>
@@ -30,7 +31,7 @@ export default async function Character({ params }) {
                                     {/* <Image src={images.vision} width={30} height={30} alt={'character_vision'} /> */}
                                 </div>
                                 <div className={styles.characer_rarity}>
-                                    {/* <StarsRarity rarity={data.rarity} /> */}
+                                    <StarsRarity rarity={Number(basicInfo.rarity.substr(0, 1))} />
                                 </div>
                             </div>
                             <div className={styles.character_description}>
@@ -38,15 +39,13 @@ export default async function Character({ params }) {
                             </div>
                         </div>
                         <div className={styles.character_splash}>
-                            {true &&
-                                <Image
-                                    src={basicInfo.header_img_url}
-                                    alt={`character_picture`}
-                                    height={450}
-                                    width={600}
-                                    quality={80}
-                                />
-                            }
+                            <Image
+                                src={basicInfo.header_img_url}
+                                alt={`character_picture`}
+                                height={450}
+                                width={600}
+                                quality={80}
+                            />
                         </div>
                     </section>
                     <section className={`${styles.details_table} ${styles[`bg_${vision.value.toLowerCase()}`]}`}>
@@ -60,7 +59,7 @@ export default async function Character({ params }) {
                             </div>
                             <div className={styles.table_column}>
                                 <span>Birthday</span>
-                                <p>{attributes['Birthday'].substr(5)}</p>
+                                <p>{attributes['Birthday']}</p>
                             </div>
                         </div>
                         <div className={styles.table_row}>
@@ -106,6 +105,8 @@ export default async function Character({ params }) {
                     </section>
                 </div>
             </main>
-        </>
+
+            <ElementalBackground bg={vision.value.toLowerCase()} />
+        </div>
     )
 };

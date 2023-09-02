@@ -6,8 +6,6 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 
 export default function CharacterCard({ data }) {
-    // console.log(data)
-
     return (
         <Link href={`/character/${data.id}`} target='_blank'>
             <div className={styles.character_card_container}>

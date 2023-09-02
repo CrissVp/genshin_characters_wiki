@@ -8,7 +8,6 @@ const getCharactersData = async () => await CharactersModel.getAll();
 
 export default async function Home() {
   const characters = await getCharactersData();
-  // console.log(characters)
 
   return (
     <>

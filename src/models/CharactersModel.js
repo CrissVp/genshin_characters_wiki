@@ -1,7 +1,4 @@
-import { IDS_MAP } from "../lib/charactersIdMap";
-import { RESPONSE_TYPE, createRequest, removeTags } from "../lib/utils";
-
-const API_URL = 'https://api.genshin.dev';
+import { createRequest, removeTags } from "../lib/utils";
 
 export class CharactersModel {
     static async getId(keyword) {
@@ -46,7 +43,7 @@ export class CharactersModel {
         const res = await createRequest(`https://sg-wiki-api-static.hoyolab.com/hoyowiki/genshin/wapi/entry_page?entry_page_id=${id}`);
 
         const data = removeTags(res.data.page);
-        const { name, desc, icon_url, header_img_url } = data;
+        const { name, desc, icon_url, header_img_url, filter_values: { character_rarity: { values: [rarity] } } } = data;
         const attributesData = formatAttributes(data.modules[0].components[0].data);
 
         return {
@@ -54,6 +51,7 @@ export class CharactersModel {
                 id,
                 name,
                 desc,
+                rarity,
                 icon_url,
                 header_img_url,
             },
