@@ -8,5 +8,5 @@ export default function StarsRarity({ rarity }) {
                 <Image key={index} src={'/levelStar.png'} width={10} height={10} alt={'star_level'} />
             ))}
         </div>
-    )
-}
+    );
+};
