@@ -14,7 +14,7 @@ export default function AscensionTable({ data, vision }) {
         <TableComponent title={'Ascension'} vision={vision}>
             <div className={styles.page_buttons}>
                 {data.map((item) => (
-                    <Button active={pageData.key === item.key} text={item.key} handleClick={() => setPageData(item)} />
+                    <Button key={item.key} active={pageData.key === item.key} text={item.key} handleClick={() => setPageData(item)} />
                 ))}
             </div>
             <div key={pageData.key} className={styles.data_table}>

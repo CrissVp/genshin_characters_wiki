@@ -1,0 +1,61 @@
+.gallery_container {
+    display: grid;
+    grid-template-columns: 800px 1fr;
+
+    .gallery {
+        gap: 20px;
+        display: flex;
+        overflow: hidden;
+        flex-direction: column;
+
+        .gallery_buttons {
+            gap: 10px;
+            display: flex;
+        }
+
+        .character_pics {
+            display: flex;
+            scroll-behavior: smooth;
+            transition: transform .2s ease;
+
+            .gallery_item {
+                width: 800px;
+
+                .gallery_pic {
+                    width: 800px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        width: 450px;
+                        height: 450px;
+                        border-radius: 15px;
+                    }
+                }
+
+                .gallery_desc {
+                    max-width: 80%;
+                    font-size: 14px;
+                    margin-top: 10px;
+                    color: hsla(0, 0%, 100%, 0.65);
+                    font-family: 'Do Hyeon', sans-serif;
+                }
+            }
+        }
+    }
+
+    .character_card {
+        h4 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: hsla(0, 0%, 100%, .65);
+            font-family: 'Acme', sans-serif;
+        }
+
+        img {
+            border-radius: 15px;
+        }
+    }
+}

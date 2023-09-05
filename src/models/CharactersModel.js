@@ -1,4 +1,4 @@
-import { createRequest, removeTags } from "../lib/utils";
+import { createRequest, removeTags, stringToObj } from "../lib/utils";
 import { MaterialsModel } from "./MaterialsModel";
 
 export class CharactersModel {
@@ -46,8 +46,9 @@ export class CharactersModel {
         const data = removeTags(res.data.page);
         const { name, desc, icon_url, header_img_url, filter_values: { character_rarity: { values: [rarity] } } } = data;
 
-        const attributesData = formatAttributes(data.modules[0].components[0].data);
+        const attributesData = formatAttributesData(data.modules[0].components[0].data);
         const ascensionData = await formatAscensionData(data.modules[1].components[0].data);
+        const galleryData = formatGalleryData(data.modules[2].components[0].data);
 
         return {
             basicInfo: {
@@ -58,14 +59,15 @@ export class CharactersModel {
                 icon_url,
                 header_img_url,
             },
-            attributes: attributesData,
+            attributesData,
             ascensionData,
+            galleryData
         };
     };
 };
 
-const formatAttributes = (data) => {
-    const fixedObj = JSON.parse(data);
+const formatAttributesData = (data) => {
+    const fixedObj = stringToObj(data);
     return fixedObj.list.reduce((acc, curr) => {
         if (curr.key !== 'Special Dish' && curr.key !== 'TCG Character Card') {
             acc[curr.key] = curr.value[0];
@@ -76,7 +78,7 @@ const formatAttributes = (data) => {
 };
 
 const formatAscensionData = async (data) => {
-    const fixedObj = JSON.parse(data);
+    const fixedObj = stringToObj(data);
     return await Promise.all(
         fixedObj.list.map(async (item) => {
             const { key, combatList, materials } = item;
@@ -97,3 +99,5 @@ const formatAscensionData = async (data) => {
         })
     );
 };
+
+const formatGalleryData = (data) => stringToObj(data);

@@ -2,18 +2,19 @@ import { CharactersModel } from "@/models/CharactersModel";
 import Image from "next/image";
 
 import ElementalBackground from "@/components/ElementalBackground";
-import StarsRarity from "@/components/StarsRarity";
-import styles from './styles.module.scss';
 import AttributesTable from "@/components/AttributesTable";
 import AscensionTable from "@/components/AscensionTable";
+import StarsRarity from "@/components/StarsRarity";
+import styles from './styles.module.scss';
+import CharacterGallery from "@/components/CharacterGallery";
 
 const getCharacterData = async (id) => await CharactersModel.getDataById(id);
 
 export default async function Character({ params }) {
-    const { basicInfo, attributes, ascensionData } = await getCharacterData(params.id);
+    const { basicInfo, attributesData, ascensionData, galleryData } = await getCharacterData(params.id);
     const vision = {
-        type: attributes['Vision'] ? 'Vision' : 'Gnosis',
-        value: attributes['Vision'] || attributes['Gnosis']
+        type: attributesData['Vision'] ? 'Vision' : 'Gnosis',
+        value: attributesData['Vision'] || attributesData['Gnosis']
     };
 
     return (
@@ -51,8 +52,9 @@ export default async function Character({ params }) {
                         </div>
                     </section>
                     <div className={styles.info_tables}>
-                        <AttributesTable vision={vision} attributes={attributes} />
+                        <AttributesTable vision={vision} attributes={attributesData} />
                         <AscensionTable vision={vision} data={ascensionData} />
+                        <CharacterGallery vision={vision} data={galleryData} />
                     </div>
                 </div>
             </main>

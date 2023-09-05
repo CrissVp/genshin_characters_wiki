@@ -7,6 +7,8 @@ export const createRequest = async (url, options) => {
     }
 };
 
+export const stringToObj = (data) => JSON.parse(data);
+
 export const removeTags = (data) => {
     const string = JSON.stringify(data);
     const regex = /(<([^>]+)>)/gi;
