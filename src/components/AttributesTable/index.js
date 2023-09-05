@@ -50,9 +50,16 @@ export default function AttributesTable({ attributes, vision }) {
                     <p>{attributes['Korean VA']}</p>
                 </div>
                 <div className={styles.table_column}>
+                    <span>Japanese VA</span>
+                    <p>{attributes['Japanese VA']}</p>
+                </div>
+            </div>
+            <div className={styles.table_row}>
+                <div className={styles.table_column}>
                     <span>Version Released</span>
                     <p>{attributes['Version Released']}</p>
                 </div>
+                <div className={styles.table_column}></div>
             </div>
         </TableComponent>
     );

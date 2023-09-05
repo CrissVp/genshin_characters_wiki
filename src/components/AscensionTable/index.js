@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 import TableComponent from '../TableComponent';
+import Button from '../Button';
 import styles from './styles.module.scss';
-import Image from 'next/image';
 
 export default function AscensionTable({ data, vision }) {
     const [pageData, setPageData] = useState(data[1]);
@@ -13,7 +14,7 @@ export default function AscensionTable({ data, vision }) {
         <TableComponent title={'Ascension'} vision={vision}>
             <div className={styles.page_buttons}>
                 {data.map((item) => (
-                    <button onClick={() => setPageData(item)} key={item.key}>{item.key}</button>
+                    <Button active={pageData.key === item.key} text={item.key} handleClick={() => setPageData(item)} />
                 ))}
             </div>
             <div key={pageData.key} className={styles.data_table}>
