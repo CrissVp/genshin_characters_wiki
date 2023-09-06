@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 
 import TableComponent from '../TableComponent';
@@ -10,9 +10,11 @@ import styles from './styles.module.scss';
 
 export default function CharacterGallery({ data, vision }) {
     const galleryPics = useRef(null);
+    const [activePage, setActivePage] = useState(data.list[0].key);
 
-    const scrollToItem = (index) => {
+    const scrollToItem = (index, key) => {
         galleryPics.current.style = `transform: translate3d(${-800 * index}px, 0px, 0px);`
+        setActivePage(key);
     };
 
     return (
@@ -21,7 +23,7 @@ export default function CharacterGallery({ data, vision }) {
                 <div className={styles.gallery}>
                     <div className={styles.gallery_buttons}>
                         {data.list.map((item, index) => (
-                            <Button handleClick={() => scrollToItem(index)} text={item.key} key={index} />
+                            <Button active={activePage === item.key} handleClick={() => scrollToItem(index, item.key)} text={item.key} key={index} />
                         ))}
                     </div>
                     <div ref={galleryPics} className={styles.character_pics}>
@@ -31,7 +33,7 @@ export default function CharacterGallery({ data, vision }) {
                                     <Image src={item.img} width={450} height={450} alt='Gallery_Pic' />
                                 </div>
                                 <div className={styles.gallery_desc}>
-                                    <p>{item.imgDesc}</p>
+                                    <div dangerouslySetInnerHTML={{ __html: item.imgDesc }}></div>
                                 </div>
                             </div>
                         ))}

@@ -1,0 +1,58 @@
+.talent_button {
+    opacity: .65;
+    width: 112px;
+    height: 112px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    pointer-events: none;
+    justify-content: center;
+
+    &:hover {
+        opacity: 1;
+        
+        button {
+            cursor: pointer;
+        }
+    }
+
+    button {
+        width: 70px;
+        height: 70px;
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        pointer-events: auto;
+        background-color: transparent;
+        border: 2px solid hsla(0, 0%, 100%, .25);
+
+        image {
+            width: 68px;
+            height: 68px;
+        }
+    }
+
+    svg {
+        width: 115px;
+        height: 115px;
+        position: absolute;
+        visibility: hidden;
+    }
+}
+
+.button_active {
+    opacity: 1;
+
+    button {
+        border: 2px solid rgba(0, 192, 255, .85);
+    }
+
+    svg {
+        visibility: visible;
+
+        path {
+            fill: rgba(0, 192, 255, .45);
+            fill-opacity: 1;
+        }
+    }
+}
