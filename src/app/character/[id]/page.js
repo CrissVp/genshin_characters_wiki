@@ -8,15 +8,12 @@ import AscensionTable from "@/components/AscensionTable";
 import StarsRarity from "@/components/StarsRarity";
 import styles from './styles.module.scss';
 import Talents from "@/components/Talents";
+import Constellations from "@/components/Constellations";
 
 const getCharacterData = async (id) => await CharactersModel.getDataById(id);
 
 export default async function Character({ params }) {
-    const { basicInfo, attributesData, ascensionData, galleryData, talentsData } = await getCharacterData(params.id);
-    const vision = {
-        type: attributesData['Vision'] ? 'Vision' : 'Gnosis',
-        value: attributesData['Vision'] || attributesData['Gnosis']
-    };
+    const { basicInfo, attributesData, ascensionData, galleryData, talentsData, constellationsData } = await getCharacterData(params.id);
 
     return (
         <div className={styles.page_container}>
@@ -32,7 +29,7 @@ export default async function Character({ params }) {
                                     <span>{basicInfo.name}</span>
                                 </div>
                                 <div className={styles.character_vision}>
-                                    <Image src={`/${vision.value.toLowerCase()}_vision.png`} width={30} height={30} alt={'character_vision'} />
+                                    <Image src={`/${basicInfo.vision.toLowerCase()}_vision.png`} width={30} height={30} alt={'character_vision'} />
                                 </div>
                                 <div className={styles.characer_rarity}>
                                     <StarsRarity rarity={Number(basicInfo.rarity.substr(0, 1))} />
@@ -53,15 +50,16 @@ export default async function Character({ params }) {
                         </div>
                     </section>
                     <div className={styles.info_tables}>
-                        <AttributesTable vision={vision} attributes={attributesData} />
-                        <AscensionTable vision={vision} data={ascensionData} />
-                        <CharacterGallery vision={vision} data={galleryData} />
-                        <Talents vision={vision} data={talentsData} />
+                        <AttributesTable vision={basicInfo.vision} attributes={attributesData} />
+                        <AscensionTable vision={basicInfo.vision} data={ascensionData} />
+                        <CharacterGallery vision={basicInfo.vision} data={galleryData} />
+                        <Talents vision={basicInfo.vision} data={talentsData} />
+                        <Constellations vision={basicInfo.vision} data={constellationsData} />
                     </div>
                 </div>
             </main>
 
-            <ElementalBackground bg={vision.value.toLowerCase()} />
+            <ElementalBackground bg={basicInfo.vision.toLowerCase()} />
         </div>
     )
 };

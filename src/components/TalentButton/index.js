@@ -1,8 +1,8 @@
 import styles from './styles.module.scss';
 
-export default function TalentButton({ children, active, handleClick }) {
+export default function TalentButton({ children, active, vision, handleClick }) {
     return (
-        <div className={`${styles.talent_button} ${active ? styles.button_active : ''}`}>
+        <div className={`${styles.talent_button} ${active ? `${styles.button_active} ${styles[`border_${vision.toLowerCase()}`]}` : ''}`}>
             <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"
                 className="d-talent-keys-active hydro">
                 <path d="M57.74 20.603l1.265-.913A28.388 28.388 0 0039.598 8.125a5.868 5.868 0 01-2.7-3.48l-.85-3.02-.898 3.004a5.875 5.875 0 01-3.004 3.543A28.357 28.357 0 0013.059 19.69l1.264.913A26.805 26.805 0 0133.16 9.616a5.883 5.883 0 012.107 2.302l.702 1.412.734-1.405a5.86 5.86 0 012.224-2.34 26.798 26.798 0 0118.814 11.018z" fill="#CC80FF" fillOpacity=".25"></path>

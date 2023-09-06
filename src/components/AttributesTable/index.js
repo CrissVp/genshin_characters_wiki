@@ -26,8 +26,8 @@ export default function AttributesTable({ attributes, vision }) {
             </div>
             <div className={styles.table_row}>
                 <div className={styles.table_column}>
-                    <span>{vision.type}</span>
-                    <p>{vision.value}</p>
+                    <span>{attributes['Vision'] ? 'Vision' : 'Gnosis'}</span>
+                    <p>{attributes['Vision'] || attributes['Gnosis']}</p>
                 </div>
                 <div className={styles.table_column}>
                     <span>Affiliation</span>

@@ -30,7 +30,7 @@ export default function CharacterGallery({ data, vision }) {
                         {data.list.map((item) => (
                             <div key={item.key} className={styles.gallery_item}>
                                 <div className={styles.gallery_pic}>
-                                    <Image src={item.img} width={450} height={450} alt='Gallery_Pic' />
+                                    <Image src={item.img} width={450} height={450} alt='Gallery_Pic' placeholder="blur" blurDataURL="/load_img.png" />
                                 </div>
                                 <div className={styles.gallery_desc}>
                                     <div dangerouslySetInnerHTML={{ __html: item.imgDesc }}></div>

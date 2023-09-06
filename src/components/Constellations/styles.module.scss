@@ -1,0 +1,25 @@
+.contellations_container {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .constellation {
+        .constellation_title {
+            gap: 20px;
+            display: flex;
+            align-items: center;
+
+            h4 {
+                font-weight: 400;
+                font-size: 20px;
+            }
+        }
+
+        .contellation_desc {
+            font-size: 14px;
+            line-height: 20px;
+            color: hsla(0, 0%, 100%, .65);
+            font-family: Tahoma, Helvetica, Arial, sans-serif !important;
+        }
+    }
+}

@@ -45,11 +45,13 @@ export class CharactersModel {
 
         const data = res.data.page;
         const { name, desc, icon_url, header_img_url, filter_values: { character_rarity: { values: [rarity] } } } = data;
+        const { filter_values: { character_vision: { values: [vision] } } } = data;
 
         const attributesData = formatAttributesData(data.modules[0].components[0].data);
         const ascensionData = await formatAscensionData(data.modules[1].components[0].data);
         const galleryData = formatGalleryData(data.modules[2].components[0].data);
         const talentsData = formatTalentsData(data.modules[3].components[0].data);
+        const constellationsData = formatConstellationsData(data.modules[4].components[0].data);
 
         return {
             basicInfo: {
@@ -57,13 +59,15 @@ export class CharactersModel {
                 name,
                 desc,
                 rarity,
+                vision,
                 icon_url,
                 header_img_url,
             },
             attributesData,
             ascensionData,
             galleryData,
-            talentsData
+            talentsData,
+            constellationsData
         };
     };
 };
@@ -106,3 +110,4 @@ const formatAscensionData = async (data) => {
 
 const formatGalleryData = (data) => stringToObj(data);
 const formatTalentsData = (data) => stringToObj(data);
+const formatConstellationsData = (data) => stringToObj(data);

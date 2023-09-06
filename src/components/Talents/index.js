@@ -14,7 +14,7 @@ export default function Talents({ data, vision }) {
         <TableComponent title={'Talents'} vision={vision}>
             <div className={styles.talent_buttons}>
                 {data.list.map((item, index) => (
-                    <TalentButton handleClick={() => setPage(item)} key={index} active={page.key === item.key}>
+                    <TalentButton vision={vision} handleClick={() => setPage(item)} key={index} active={page.key === item.key}>
                         <Image src={item.icon_url} height={70} width={70} alt={'Talent_Icon'} />
                     </TalentButton>
                 ))}
@@ -22,7 +22,7 @@ export default function Talents({ data, vision }) {
             <div className={styles.talent_data}>
                 {page.talent_img && (
                     <div className={styles.talent_pic}>
-                        <Image src={page.talent_img} width={300} height={180} alt='Talent_Pic' />
+                        <Image src={page.talent_img} width={300} height={180} alt='Talent_Pic' placeholder="blur" blurDataURL="/load_img.png" />
                     </div>
                 )}
                 <div className={styles.talent_desc}>

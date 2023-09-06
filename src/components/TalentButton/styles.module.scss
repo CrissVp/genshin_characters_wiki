@@ -10,7 +10,7 @@
 
     &:hover {
         opacity: 1;
-        
+
         button {
             cursor: pointer;
         }
@@ -42,7 +42,24 @@
 
 .button_active {
     opacity: 1;
+}
 
+.border_anemo {
+    button {
+        border: 2px solid rgba(51, 215, 160, .85);
+    }
+
+    svg {
+        visibility: visible;
+
+        path {
+            fill: rgba(51, 215, 160, .45);
+            fill-opacity: 1;
+        }
+    }
+}
+
+.border_hydro {
     button {
         border: 2px solid rgba(0, 192, 255, .85);
     }
@@ -52,6 +69,81 @@
 
         path {
             fill: rgba(0, 192, 255, .45);
+            fill-opacity: 1;
+        }
+    }
+}
+
+.border_cryo {
+    button {
+        border: 2px solid rgba(122, 242, 242, .85);
+    }
+
+    svg {
+        visibility: visible;
+
+        path {
+            fill: rgba(122, 242, 242, .45);
+            fill-opacity: 1;
+        }
+    }
+}
+
+.border_pyro {
+    button {
+        border: 2px solid rgba(255, 102, 64, .85);
+    }
+
+    svg {
+        visibility: visible;
+
+        path {
+            fill: rgba(255, 102, 64, .45);
+            fill-opacity: 1;
+        }
+    }
+}
+
+.border_electro {
+    button {
+        border: 2px solid rgba(204, 128, 255, .85);
+    }
+
+    svg {
+        visibility: visible;
+
+        path {
+            fill: rgba(204, 128, 255, .45);
+            fill-opacity: 1;
+        }
+    }
+}
+
+.border_dendro {
+    button {
+        border: 2px solid rgba(51, 215, 160, .85);
+    }
+
+    svg {
+        visibility: visible;
+
+        path {
+            fill: rgba(51, 215, 160, .45);
+            fill-opacity: 1;
+        }
+    }
+}
+
+.border_geo {
+    button {
+        border: 2px solid rgba(255, 176, 13, .85);
+    }
+
+    svg {
+        visibility: visible;
+
+        path {
+            fill: rgba(255, 176, 13, .45);
             fill-opacity: 1;
         }
     }
