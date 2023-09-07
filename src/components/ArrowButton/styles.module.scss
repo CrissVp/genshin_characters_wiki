@@ -1,0 +1,10 @@
+.button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    svg {
+        border-radius: 50%;
+        border: 1px solid hsla(0,0%,100%,.08);
+    }
+}

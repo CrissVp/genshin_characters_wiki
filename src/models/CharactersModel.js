@@ -1,4 +1,4 @@
-import { createRequest, removeTags, stringToObj } from "../lib/utils";
+import { createRequest, removeTags } from "../lib/utils";
 import { MaterialsModel } from "./MaterialsModel";
 
 export class CharactersModel {
@@ -47,6 +47,7 @@ export class CharactersModel {
         const { name, desc, icon_url, header_img_url, filter_values: { character_rarity: { values: [rarity] } } } = data;
         const { filter_values: { character_vision: { values: [vision] } } } = data;
 
+        const basicInfo = formatBasicInfo({ id, name, desc, rarity, vision, icon_url, header_img_url });
         const attributesData = formatAttributesData(data.modules[0].components[0].data);
         const ascensionData = await formatAscensionData(data.modules[1].components[0].data);
         const galleryData = formatGalleryData(data.modules[2].components[0].data);
@@ -54,15 +55,7 @@ export class CharactersModel {
         const constellationsData = formatConstellationsData(data.modules[4].components[0].data);
 
         return {
-            basicInfo: {
-                id,
-                name,
-                desc,
-                rarity,
-                vision,
-                icon_url,
-                header_img_url,
-            },
+            basicInfo,
             attributesData,
             ascensionData,
             galleryData,
@@ -72,9 +65,15 @@ export class CharactersModel {
     };
 };
 
+const formatBasicInfo = (data) => {
+    const objString = JSON.stringify(data);
+    const fixedString = removeTags(objString);
+    return JSON.parse(fixedString);
+};
+
 const formatAttributesData = (data) => {
     const fixedString = removeTags(data)
-    const fixedObj = stringToObj(fixedString);
+    const fixedObj = JSON.parse(fixedString);
     return fixedObj.list.reduce((acc, curr) => {
         if (curr.key !== 'Special Dish' && curr.key !== 'TCG Character Card') {
             acc[curr.key] = curr.value[0];
@@ -86,7 +85,7 @@ const formatAttributesData = (data) => {
 
 const formatAscensionData = async (data) => {
     const fixedString = removeTags(data);
-    const fixedObj = stringToObj(fixedString);
+    const fixedObj = JSON.parse(fixedString);
     return await Promise.all(
         fixedObj.list.map(async (item) => {
             const { key, combatList, materials } = item;
@@ -108,6 +107,6 @@ const formatAscensionData = async (data) => {
     );
 };
 
-const formatGalleryData = (data) => stringToObj(data);
-const formatTalentsData = (data) => stringToObj(data);
-const formatConstellationsData = (data) => stringToObj(data);
+const formatGalleryData = (data) => JSON.parse(data);
+const formatTalentsData = (data) => JSON.parse(data);
+const formatConstellationsData = (data) => JSON.parse(data);
