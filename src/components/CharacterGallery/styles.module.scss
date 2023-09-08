@@ -14,13 +14,20 @@
             display: flex;
 
             .list_container {
-                overflow: hidden;
+                overflow-x: hidden;
 
                 .buttons_list {
                     gap: 10px;
                     display: flex;
-                    scroll-behavior: smooth;
-                    transition: transform .2s ease;
+                }
+            }
+
+            .scroll_btn {
+                button {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
 

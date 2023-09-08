@@ -14,8 +14,9 @@ export default function CharacterGallery({ data, vision }) {
 
     const buttonList = useRef(null);
     const galleryPics = useRef(null);
-    const [navButtonVisible, setNavButtonVisible] = useState(false);
+
     const [activePage, setActivePage] = useState(data.list[0].key);
+    const [scrollButtonsVisible, setScrollButtonsVisible] = useState(false);
 
     const scrollToItem = ({ element, x }) => {
         element.current.style = `transform: translate3d(${x}px, 0px, 0px);`
@@ -27,15 +28,15 @@ export default function CharacterGallery({ data, vision }) {
     };
 
     const scrollButtonsPrev = () => {
-        scrollToItem({ element: buttonList, x: 0 });
+        buttonList.current.firstChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
     }
 
     const scrollButtonsNext = () => {
-        scrollToItem({ element: buttonList, x: -500 });
+        buttonList.current.lastChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
     };
 
     useEffect(() => {
-        if (buttonList?.current) setNavButtonVisible(buttonList.current.scrollWidth > PIC_CONTAINER_WIDTH)
+        if (buttonList?.current) setScrollButtonsVisible(buttonList.current.scrollWidth > PIC_CONTAINER_WIDTH)
     }, [buttonList?.current])
 
     return (
@@ -43,8 +44,8 @@ export default function CharacterGallery({ data, vision }) {
             <div className={styles.gallery_container}>
                 <div className={styles.gallery}>
                     <div className={styles.gallery_buttons}>
-                        {navButtonVisible && (
-                            <div className={styles.button_prev}>
+                        {scrollButtonsVisible && (
+                            <div className={`${styles.button_prev} ${styles.scroll_btn}`}>
                                 <ArrowButton handleClick={scrollButtonsPrev} />
                             </div>
                         )}
@@ -55,8 +56,8 @@ export default function CharacterGallery({ data, vision }) {
                                 ))}
                             </div>
                         </div>
-                        {navButtonVisible && (
-                            <div className={styles.button_next}>
+                        {scrollButtonsVisible && (
+                            <div className={`${styles.button_next} ${styles.scroll_btn}`}>
                                 <ArrowButton handleClick={scrollButtonsNext} />
                             </div>
                         )}
