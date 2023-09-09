@@ -4,11 +4,11 @@ import Image from "next/image";
 import ElementalBackground from "@/components/ElementalBackground";
 import CharacterGallery from "@/components/CharacterGallery";
 import AttributesTable from "@/components/AttributesTable";
+import Constellations from "@/components/Constellations";
 import AscensionTable from "@/components/AscensionTable";
 import StarsRarity from "@/components/StarsRarity";
-import styles from './styles.module.scss';
 import Talents from "@/components/Talents";
-import Constellations from "@/components/Constellations";
+import styles from './styles.module.scss';
 
 const getCharacterData = async (id) => await CharactersModel.getDataById(id);
 
