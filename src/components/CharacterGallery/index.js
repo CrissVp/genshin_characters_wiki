@@ -29,7 +29,7 @@ export default function CharacterGallery({ data, vision }) {
 
     const scrollButtonsPrev = () => {
         buttonList.current.firstChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
-    }
+    };
 
     const scrollButtonsNext = () => {
         buttonList.current.lastChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
