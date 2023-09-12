@@ -115,15 +115,40 @@
                 width: 100%;
 
                 .info_section {
-                    padding: 20px;
                     display: flex;
+                    position: relative;
                     align-items: center;
-                    flex-direction: column;
+                    flex-direction: column-reverse;
+
+                    .character_info {
+                        position: absolute;
+                        padding: 20px;
+                        bottom: 0;
+                        left: 0;
+
+                        .character_details {
+                            grid-template-columns: .1fr 1fr;
+
+                            .character_icon {
+                                display: none;
+                            }
+
+                            .characer_rarity {
+                                grid-column: 1/3;
+                            }
+                        }
+                    }
 
                     .character_splash {
-                        width: 100%;
-                        height: auto;
+                        width: 700px;
+                        height: 700px;
+                        max-width: unset;
+                        max-height: unset;
                     }
+                }
+
+                .info_tables {
+                    transform: unset;
                 }
             }
         }

@@ -1,12 +1,6 @@
-.page_buttons {
-    gap: 10px;
-    display: flex;
-    margin-bottom: 20px;
-}
-
-
 .data_table {
     display: grid;
+    margin-top: 20px;
     overflow: hidden;
     border-radius: 15px;
     grid-template-columns: 1fr 0.5fr;
