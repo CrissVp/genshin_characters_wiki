@@ -14,8 +14,10 @@ export default function CharacterGallery({ data, vision }) {
 
     const buttonList = useRef(null);
     const galleryPics = useRef(null);
+    const galleryContainer = useRef(null);
 
     const [activePage, setActivePage] = useState(data.list[0].key);
+    const [galleryItemWidth, setGalleryItemWidth] = useState(undefined);
     const [scrollButtonsVisible, setScrollButtonsVisible] = useState(false);
 
     const scrollToItem = ({ element, x }) => {
@@ -23,7 +25,7 @@ export default function CharacterGallery({ data, vision }) {
     };
 
     const scrollGallery = (index, key) => {
-        scrollToItem({ element: galleryPics, x: -PIC_CONTAINER_WIDTH * index });
+        scrollToItem({ element: galleryPics, x: -galleryItemWidth * index });
         setActivePage(key);
     };
 
@@ -36,13 +38,27 @@ export default function CharacterGallery({ data, vision }) {
     };
 
     useEffect(() => {
+        const resizeObserver = new ResizeObserver((entries) => {
+            const { height, width } = entries[0].contentRect;
+            console.log({ height, width });
+            setGalleryItemWidth(width);
+        });
+
+        if (galleryContainer?.current) {
+            resizeObserver.observe(galleryContainer.current);
+        }
+
+        return () => resizeObserver.unobserve(galleryContainer.current);
+    }, [galleryContainer?.current]);
+
+    useEffect(() => {
         if (buttonList?.current) setScrollButtonsVisible(buttonList.current.scrollWidth > PIC_CONTAINER_WIDTH)
-    }, [buttonList?.current])
+    }, [buttonList?.current]);
 
     return (
         <TableComponent title={'Gallery'} vision={vision}>
             <div className={styles.gallery_container}>
-                <div className={styles.gallery}>
+                <div className={styles.gallery} ref={galleryContainer}>
                     <div className={styles.gallery_buttons}>
                         {scrollButtonsVisible && (
                             <div className={`${styles.button_prev} ${styles.scroll_btn}`}>
@@ -64,7 +80,8 @@ export default function CharacterGallery({ data, vision }) {
                     </div>
                     <div ref={galleryPics} className={styles.character_pics}>
                         {data.list.map((item) => (
-                            <div key={item.key} className={`${styles.gallery_item} ${data.pic ? '' : styles.no_pic}`}>
+                            <div key={item.key} className={`${styles.gallery_item} ${data.pic ? '' : styles.no_pic}`}
+                                style={galleryItemWidth && { minWidth: galleryItemWidth }}>
                                 {item.key === activePage && (
                                     <>
                                         <div className={`${styles.gallery_pic} ${data.pic ? '' : styles.no_pic}`}>

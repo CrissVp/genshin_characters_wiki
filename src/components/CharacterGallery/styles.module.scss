@@ -38,15 +38,19 @@
 
         .character_pics {
             display: flex;
-            scroll-behavior: smooth;
             transition: transform .2s ease;
+            scroll-snap-type: x mandatory;
+
+            &::-webkit-scrollbar {
+                // display: none;
+            }
 
             .gallery_item {
-                width: 800px;
                 min-width: 800px;
+                scroll-snap-align: start;
 
                 .gallery_pic {
-                    width: 800px;
+                    width: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -89,4 +93,10 @@
 .no_pic {
     width: 1052px !important;
     min-width: 1052px !important;
+}
+
+@media only screen and (992px < width < 1200px) {
+    .gallery_container {
+        flex-direction: column;
+    }
 }
