@@ -90,13 +90,14 @@
     }
 }
 
-.no_pic {
-    width: 1052px !important;
-    min-width: 1052px !important;
+.card {
+    img {
+        width: 300px !important;
+    }
 }
 
-@media only screen and (992px < width < 1200px) {
-    .gallery_container {
-        flex-direction: column;
+@media only screen and (width < 1200px) {
+    .character_card {
+        display: none;
     }
 }
