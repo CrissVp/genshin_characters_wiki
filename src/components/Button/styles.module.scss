@@ -34,3 +34,10 @@
         fill-opacity: 1
     }
 }
+
+@media (768px <= width < 992px) {
+    .button {
+        font-size: 14px;
+        padding: 8px 18px;
+    }
+}

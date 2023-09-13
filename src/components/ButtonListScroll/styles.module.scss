@@ -1,9 +1,0 @@
-.buttons_list {
-    gap: 10px;
-    display: flex;
-    overflow-x: scroll;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-}

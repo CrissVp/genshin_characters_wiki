@@ -1,23 +1,22 @@
 'use client'
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 
 import TableComponent from '../TableComponent';
-import Button from '../Button';
+import ButtonsList from '../ButtonsList';
+
 import styles from './styles.module.scss';
-import ButtonListScroll from '../ButtonListScroll';
 
 export default function AscensionTable({ data, vision }) {
+    const buttonsContainer = useRef(null);
     const [pageData, setPageData] = useState(data[1]);
 
     return (
         <TableComponent title={'Ascension'} vision={vision}>
-            <ButtonListScroll>
-                {data.map((item) => (
-                    <Button key={item.key} active={pageData.key === item.key} text={item.key} handleClick={() => setPageData(item)} />
-                ))}
-            </ButtonListScroll>
+            <div ref={buttonsContainer} className={styles.button_list}>
+                <ButtonsList items={data} activeItem={pageData} itemOnClick={setPageData} containerWidth={buttonsContainer.current?.clientWidth} />
+            </div>
             <div key={pageData.key} className={styles.data_table}>
                 <table className={styles.table}>
                     <tbody className={styles.table_body}>

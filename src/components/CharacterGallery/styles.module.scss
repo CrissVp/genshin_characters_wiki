@@ -5,45 +5,12 @@
         gap: 20px;
         flex-grow: 1;
         display: flex;
-        min-width: 800px;
         overflow: hidden;
         flex-direction: column;
-
-        .gallery_buttons {
-            gap: 10px;
-            display: flex;
-
-            .list_container {
-                overflow-x: hidden;
-
-                .buttons_list {
-                    gap: 10px;
-                    display: flex;
-                }
-            }
-
-            .scroll_btn {
-                button {
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-            }
-
-            .button_next {
-                transform: rotate(180deg);
-            }
-        }
 
         .character_pics {
             display: flex;
             transition: transform .2s ease;
-            scroll-snap-type: x mandatory;
-
-            &::-webkit-scrollbar {
-                // display: none;
-            }
 
             .gallery_item {
                 min-width: 800px;

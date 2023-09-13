@@ -4,36 +4,25 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import TableComponent from '../TableComponent';
-import ArrowButton from '../ArrowButton';
-import Button from '../Button';
+import ButtonsList from '../ButtonsList';
 
 import styles from './styles.module.scss';
 
 export default function CharacterGallery({ data, vision }) {
-    const buttonList = useRef(null);
     const galleryPics = useRef(null);
     const galleryContainer = useRef(null);
 
     const [itemWidth, setItemWidth] = useState(undefined);
     const [characterPics, setCharacterPics] = useState([]);
-    const [scrollButtonsVisible, setScrollButtonsVisible] = useState(false);
     const [activePage, setActivePage] = useState({ key: data.list[0].key, index: 0 });
 
     const scrollToItem = ({ element, index }) => {
         element.current.style = `transform: translate3d(${-itemWidth * index}px, 0px, 0px);`
     };
 
-    const scrollGallery = (index, key) => {
+    const scrollGallery = (item, index) => {
         scrollToItem({ element: galleryPics, index });
-        setActivePage({ key, index });
-    };
-
-    const scrollButtonsPrev = () => {
-        buttonList.current.firstChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
-    };
-
-    const scrollButtonsNext = () => {
-        buttonList.current.lastChild.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+        setActivePage({ key: item.key, index });
     };
 
     useEffect(() => {
@@ -60,42 +49,19 @@ export default function CharacterGallery({ data, vision }) {
     useEffect(() => {
         if (characterPics.length > 0) {
             if (activePage.key === 'Card' && characterPics[0].key !== 'Card') {
-                return scrollGallery(0, characterPics[0].key);
+                return scrollGallery(characterPics[0], 0);
             }
 
             const activeItemIndex = characterPics.findIndex((item) => item.key === activePage.key);
-            scrollGallery(activeItemIndex, activePage.key);
+            scrollGallery(activePage, activeItemIndex);
         }
     }, [characterPics]);
-
-    useEffect(() => {
-        if (buttonList?.current && galleryContainer.current)
-            setScrollButtonsVisible(buttonList.current.scrollWidth > itemWidth);
-    }, [buttonList?.current]);
 
     return (
         <TableComponent title={'Gallery'} vision={vision}>
             <div className={styles.gallery_container}>
                 <div className={styles.gallery} ref={galleryContainer}>
-                    <div className={styles.gallery_buttons}>
-                        {scrollButtonsVisible && (
-                            <div className={`${styles.button_prev} ${styles.scroll_btn}`}>
-                                <ArrowButton handleClick={scrollButtonsPrev} />
-                            </div>
-                        )}
-                        <div className={styles.list_container}>
-                            <div ref={buttonList} className={styles.buttons_list}>
-                                {characterPics.map((item, index) => (
-                                    <Button active={activePage.key === item.key} handleClick={() => scrollGallery(index, item.key)} text={item.key} key={index} />
-                                ))}
-                            </div>
-                        </div>
-                        {scrollButtonsVisible && (
-                            <div className={`${styles.button_next} ${styles.scroll_btn}`}>
-                                <ArrowButton handleClick={scrollButtonsNext} />
-                            </div>
-                        )}
-                    </div>
+                    <ButtonsList items={characterPics} activeItem={activePage} containerWidth={itemWidth} itemOnClick={scrollGallery} />
                     <div ref={galleryPics} className={styles.character_pics}>
                         {characterPics.map((item) => (
                             <div key={item.key} className={`${styles.gallery_item}`}

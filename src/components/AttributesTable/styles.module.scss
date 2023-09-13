@@ -13,3 +13,13 @@
         color: hsla(0, 0%, 100%, .25);
     }
 }
+
+@media (768px <= width < 992px) {
+    .table_row {
+        .table_column {
+            span, p {
+                font-size: 15px;
+            }
+        }
+    }
+}
