@@ -148,3 +148,25 @@
         }
     }
 }
+
+@media only screen and (width < 992px) {
+    .talent_button {
+        width: 100px;
+        height: 100px;
+
+        svg {
+            width: 103px;
+            height: 103px;
+        }
+
+        button {
+            width: 60px;
+            height: 60px;
+
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+}

@@ -48,6 +48,7 @@
 
                         .character_name {
                             span {
+                                line-height: 1;
                                 font-size: 40px;
                                 white-space: nowrap;
                             }
@@ -110,7 +111,7 @@
             }
         }
 
-        @media only screen and (992px <= width < 1200px) {
+        @media only screen and (992px <=width < 1200px) {
             .content {
                 max-width: 920px;
 
@@ -143,12 +144,13 @@
             }
         }
 
-        @media (768px <= width < 992px) {
+        @media (width < 992px) {
             .content {
                 width: 100%;
 
                 .info_section {
                     grid-template-columns: 1fr 400px;
+                    overflow: hidden;
 
                     .character_info {
                         padding: 20px;
@@ -160,6 +162,12 @@
                                     font-size: 30px;
                                     white-space: normal;
                                 }
+                            }
+                        }
+
+                        .character_description {
+                            p {
+                                font-size: 15px;
                             }
                         }
                     }
@@ -174,6 +182,38 @@
 
                 .info_tables {
                     transform: translateY(-60px);
+                }
+            }
+        }
+
+        @media (600px <=width < 768px) {
+            .content {
+                .info_section {
+                    .character_info {
+                        padding: 0;
+                        padding-left: 20px;
+                        min-width: 250px;
+
+                        .character_details {
+                            .character_name {
+                                span {
+                                    font-size: 26px;
+                                    white-space: normal;
+                                }
+                            }
+                        }
+                    }
+
+                    .character_splash {
+                        width: 350px;
+                        height: 350px;
+                        max-width: unset;
+                        max-height: unset;
+                    }
+                }
+
+                .info_tables {
+                    transform: translateY(-30px);
                 }
             }
         }

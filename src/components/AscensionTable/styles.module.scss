@@ -66,10 +66,20 @@
     }
 }
 
-@media (768px <= width < 992px) {
+@media (768px <=width < 992px) {
     .data_table {
         .table {
             font-size: 15px;
+        }
+
+        .mats_table {
+            .materials {
+                padding: 10px 5px;
+
+                .mat {
+                    gap: 3px;
+                }
+            }
         }
     }
 }
