@@ -27,7 +27,7 @@
 .button_active {
     color: #d3bc8e;
     border: 1px solid #d3bc8e;
-    background: hsla(40,44%,69%,.06);
+    background: hsla(40, 44%, 69%, .06);
 
     path {
         fill: #d3bc8e;
@@ -35,7 +35,7 @@
     }
 }
 
-@media (768px <= width < 992px) {
+@media (width < 992px) {
     .button {
         font-size: 14px;
         padding: 8px 18px;
