@@ -31,3 +31,9 @@
         }
     }
 }
+
+@media (width < 768px) {
+    .talent_data {
+        flex-direction: column;
+    }
+}

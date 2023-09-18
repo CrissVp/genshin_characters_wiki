@@ -217,5 +217,19 @@
                 }
             }
         }
+
+        @media (width < 600px) {
+            .content {
+                .info_section {
+                    display: flex;
+                    flex-direction: column-reverse;
+                
+                    .character_splash {
+                        width: 700px;
+                        height: 700px;
+                    }
+                }
+            }
+        }
     }
 }
