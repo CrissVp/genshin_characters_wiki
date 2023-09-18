@@ -1,6 +1,11 @@
 .talent_buttons {
     display: flex;
+    overflow-x: scroll;
     margin-bottom: 20px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .talent_data {
@@ -35,5 +40,16 @@
 @media (width < 768px) {
     .talent_data {
         flex-direction: column;
+    }
+}
+
+@media (width < 400px) {
+    .talent_data {
+        .talent_pic {
+            img {
+                width: 100%;
+                height: 180px;
+            }
+        }
     }
 }

@@ -6,3 +6,9 @@
     overflow: hidden;
     position: absolute;
 }
+
+@media (width < 600px) {
+    .background {
+        display: none;
+    }
+}

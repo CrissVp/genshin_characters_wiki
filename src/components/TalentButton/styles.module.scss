@@ -170,3 +170,25 @@
         }
     }
 }
+
+@media (width < 600px) {
+    .talent_button {
+        min-width: 75px;
+        height: 85px;
+
+        svg {
+            width: 83px;
+            height: 83px;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+}

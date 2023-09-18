@@ -68,3 +68,20 @@
         display: none;
     }
 }
+
+@media only screen and (width < 500px) {
+    .gallery_container {
+        .gallery {
+            .character_pics {
+                .gallery_item {
+                    .gallery_pic {
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
