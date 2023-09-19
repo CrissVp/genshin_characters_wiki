@@ -82,7 +82,11 @@
                 .character_splash {
                     width: 550px;
                     height: 550px;
+                    position: relative;
 
+                    .character_bg {
+                        display: none;
+                    }
 
                     img {
                         width: 100%;
@@ -258,14 +262,20 @@
 
                     .character_splash {
                         width: 100%;
-                        height: 550px;
+                        height: 475px;
                         display: flex;
                         position: relative;
                         justify-content: center;
 
+                        .character_bg {
+                            z-index: 2;
+                            display: block;
+                            position: absolute;
+                        }
+
                         &::after {
                             bottom: 0;
-                            z-index: 2;
+                            z-index: 4;
                             height: 30%;
                             width: 100%;
                             content: "";
@@ -274,6 +284,7 @@
                         }
 
                         img {
+                            z-index: 3;
                             width: 520px;
                             object-fit: contain;
                         }

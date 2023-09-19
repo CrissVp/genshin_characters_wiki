@@ -41,6 +41,14 @@ export default async function Character({ params }) {
                         </div>
                         <div className={styles.character_splash}>
                             <Image
+                                className={styles.character_bg}
+                                src={`/${basicInfo.vision.toLowerCase()}_mv_bg.png`}
+                                alt={`character_bg`}
+                                height={450}
+                                width={600}
+                                quality={80}
+                            />
+                            <Image
                                 src={basicInfo.header_img_url}
                                 alt={`character_picture`}
                                 height={450}
