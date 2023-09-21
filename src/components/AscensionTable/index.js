@@ -20,7 +20,7 @@ export default function AscensionTable({ data, vision }) {
         });
 
         if (buttonsContainer.current) resizeObserver.observe(buttonsContainer.current);
-        return () => resizeObserver.unobserve(buttonsContainer.current);
+        return () => { if (buttonsContainer.current) resizeObserver.unobserve(buttonsContainer.current) };
     }, []);
 
     return (

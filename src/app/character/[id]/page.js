@@ -17,7 +17,7 @@ export default async function Character({ params }) {
 
     return (
         <div className={styles.page_container}>
-            <main className={styles.main}>
+            <main className={`${styles.main} ${styles[basicInfo.vision.toLowerCase()]}`}>
                 <div className={styles.content}>
                     <section className={styles.info_section}>
                         <div className={styles.character_info}>
@@ -49,6 +49,7 @@ export default async function Character({ params }) {
                                 quality={80}
                             />
                             <Image
+                                className={styles.splash_img}
                                 src={basicInfo.header_img_url}
                                 alt={`character_picture`}
                                 height={450}

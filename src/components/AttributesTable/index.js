@@ -59,7 +59,7 @@ export default function AttributesTable({ attributes, vision }) {
                     <span>Version Released</span>
                     <p>{attributes['Version Released']}</p>
                 </div>
-                <div className={styles.table_column}></div>
+                {/* <div className={styles.table_column}></div> */}
             </div>
         </TableComponent>
     );

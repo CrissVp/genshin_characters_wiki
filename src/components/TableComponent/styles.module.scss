@@ -25,3 +25,9 @@
         }
     }
 }
+
+@media (width < 600px) {
+    .details_table {
+        border-radius: unset;
+    }
+}
