@@ -1,5 +1,5 @@
 import { CharactersModel } from "@/models/CharactersModel.js";
-import CharacterCard from "@/components/CharacterCard/index.js";
+import Characters from "@/components/Characters/index.js";
 
 import Logo from "@/components/Logo";
 import styles from './page.module.css';
@@ -18,9 +18,7 @@ export default async function Home() {
             <Logo />
           </div>
           <div className={styles.characters_container}>
-            {characters.map((character) => (
-              <CharacterCard data={character} key={character.id} />
-            ))}
+            <Characters characters={characters} />
           </div>
         </section>
       </main>

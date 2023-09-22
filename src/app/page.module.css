@@ -21,10 +21,3 @@
   justify-content: center;
   margin-bottom: 5vh;
 }
-
-.characters_container {
-  gap: 20px;
-  display: grid;
-  place-content: center;
-  grid-template-columns: repeat(auto-fill, 200px);
-}

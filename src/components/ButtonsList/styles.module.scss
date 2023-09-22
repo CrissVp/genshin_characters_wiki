@@ -24,3 +24,19 @@
         transform: rotate(180deg);
     }
 }
+
+@media (width < 600px) {
+    .gallery_buttons {
+        .list_container {
+            overflow-x: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .scroll_btn {
+            display: none;
+        }
+    }
+}

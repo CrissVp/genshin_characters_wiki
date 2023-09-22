@@ -17,27 +17,47 @@ export class CharactersModel {
 
 
     static async getAll() {
-        const res = await createRequest('https://bbs-api-os.hoyolab.com/community/painter/wapi/circle/channel/guide/second_page/info', {
-            "body": "{\"id\":\"63b63aefc61f3cbe3ead18d9\",\"offset\":0,\"selector_id_list\":[],\"size\":200}",
-            "method": "POST"
-        });
+        let data = [];
+        let reqOptions = { total: 0, size: 30, page: 1 };
 
-        return await Promise.all(
-            res.data.grid_item_list.map(async (item) => {
-                const id = await this.getIdByName(item.title);
+        do {
+            const res = await createRequest("https://sg-wiki-api.hoyolab.com/hoyowiki/genshin/wapi/get_entry_page_list", {
+                "headers": {
+                    "x-rpc-language": "en-us",
+                    "Referer": "https://wiki.hoyolab.com/",
+                },
+                "body": JSON.stringify({
+                    filters: [],
+                    menu_id: 2,
+                    page_num: reqOptions.page,
+                    page_size: reqOptions.size,
+                    use_es: true
+                }),
+                "method": "POST"
+            });
 
-                return {
-                    id: id,
-                    name: item.title,
-                    images: {
-                        avatar: item.avatar,
-                        bg: item.background,
-                        vision: item.left_icons[0],
-                        rarity: item.middle_icon
-                    }
-                };
-            })
-        );
+            reqOptions.total = res.data.total;
+            data.push(...res.data.list);
+            reqOptions.page++;
+        } while (data.length < reqOptions.total);
+
+        return data;
+        // return await Promise.all(
+        //     res.data.grid_item_list.map(async (item) => {
+        //         const id = await this.getIdByName(item.title);
+
+        //         return {
+        //             id: id,
+        //             name: item.title,
+        //             images: {
+        //                 avatar: item.avatar,
+        //                 bg: item.background,
+        //                 vision: item.left_icons[0],
+        //                 rarity: item.middle_icon
+        //             }
+        //         };
+        //     })
+        // );
     };
 
     static async getDataById(id) {
