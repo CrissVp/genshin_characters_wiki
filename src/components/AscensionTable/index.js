@@ -23,6 +23,8 @@ export default function AscensionTable({ data, vision }) {
         return () => { if (buttonsContainer.current) resizeObserver.unobserve(buttonsContainer.current) };
     }, []);
 
+    if (!data.length) return null;
+
     return (
         <TableComponent title={'Ascension'} vision={vision}>
             <div ref={buttonsContainer} className={styles.button_list}>

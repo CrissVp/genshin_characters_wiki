@@ -42,22 +42,6 @@ export class CharactersModel {
         } while (data.length < reqOptions.total);
 
         return data;
-        // return await Promise.all(
-        //     res.data.grid_item_list.map(async (item) => {
-        //         const id = await this.getIdByName(item.title);
-
-        //         return {
-        //             id: id,
-        //             name: item.title,
-        //             images: {
-        //                 avatar: item.avatar,
-        //                 bg: item.background,
-        //                 vision: item.left_icons[0],
-        //                 rarity: item.middle_icon
-        //             }
-        //         };
-        //     })
-        // );
     };
 
     static async getDataById(id) {
@@ -127,6 +111,6 @@ const formatAscensionData = async (data) => {
     );
 };
 
-const formatGalleryData = (data) => JSON.parse(data);
-const formatTalentsData = (data) => JSON.parse(data);
-const formatConstellationsData = (data) => JSON.parse(data);
+const formatGalleryData = (data) => { data && JSON.parse(data) };
+const formatTalentsData = (data) => { data && JSON.parse(data) };
+const formatConstellationsData = (data) => { data && JSON.parse(data) };

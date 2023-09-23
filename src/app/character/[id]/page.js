@@ -59,11 +59,11 @@ export default async function Character({ params }) {
                         </div>
                     </section>
                     <div className={styles.info_tables}>
-                        <AttributesTable vision={basicInfo.vision} attributes={attributesData} />
-                        <AscensionTable vision={basicInfo.vision} data={ascensionData} />
-                        <CharacterGallery vision={basicInfo.vision} data={galleryData} />
-                        <Talents vision={basicInfo.vision} data={talentsData} />
-                        <Constellations vision={basicInfo.vision} data={constellationsData} />
+                        {attributesData && <AttributesTable vision={basicInfo.vision} attributes={attributesData} />}
+                        {ascensionData && <AscensionTable vision={basicInfo.vision} data={ascensionData} />}
+                        {galleryData && <CharacterGallery vision={basicInfo.vision} data={galleryData} />}
+                        {talentsData && <Talents vision={basicInfo.vision} data={talentsData} />}
+                        {constellationsData && <Constellations vision={basicInfo.vision} data={constellationsData} />}
                     </div>
                 </div>
             </main>

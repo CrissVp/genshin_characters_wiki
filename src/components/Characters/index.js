@@ -21,14 +21,15 @@ export default function Characters({ characters }) {
 
 function CharacterCard({ data }) {
     const vision = data.filter_values.character_vision?.values[0];
+    const rarity = data.filter_values.character_rarity?.values[0];
 
     return (
         <Link href={`/character/${data.entry_page_id}`} target='_blank'>
             <div className={styles.character_card_container}>
-                <div className={styles.character_card}>
+                <div className={`${styles.character_card} bg_${rarity}`}>
                     {/* <Image src={data.images.bg} alt={`${data.id}_picture`} height={250} width={200} /> */}
-                    <Image src={data.icon_url} alt={`${data.name}_picture`} height={250} width={200} />
-                    {vision && <Image className={styles.vision} src={`/${vision.toLowerCase()}_vision.png`} alt={`character_vision`} height={50} width={50} />}
+                    <Image src={data.icon_url} alt={`${data.name}_picture`} height={124} width={124} quality={80} />
+                    {vision && <Image className={styles.vision_img} src={`/${vision.toLowerCase()}_vision.png`} alt={`character_vision`} height={50} width={50} />}
                 </div>
                 <div className={styles.character_details}>
                     <h4>{data.name}</h4>
