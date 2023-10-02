@@ -111,6 +111,6 @@ const formatAscensionData = async (data) => {
     );
 };
 
-const formatGalleryData = (data) => { data && JSON.parse(data) };
-const formatTalentsData = (data) => { data && JSON.parse(data) };
-const formatConstellationsData = (data) => { data && JSON.parse(data) };
+const formatGalleryData = (data) => { if (data) return JSON.parse(data) };
+const formatTalentsData = (data) => { if (data) return JSON.parse(data) };
+const formatConstellationsData = (data) => { if (data) return JSON.parse(data) };
