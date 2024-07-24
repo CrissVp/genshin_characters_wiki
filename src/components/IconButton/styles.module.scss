@@ -1,0 +1,15 @@
+.image {
+  top: 0px;
+  left: 0px;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  position: absolute;
+  border-radius: 50%;
+  background: #323947;
+  border: 1px solid #4a5366;
+}
+
+.image:hover {
+  background: #4a5366;
+}

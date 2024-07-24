@@ -8,7 +8,6 @@
   --dendro-bg: #183d12;
 }
 
-
 * {
   box-sizing: content-box;
   padding: 0;
@@ -18,8 +17,10 @@
 html,
 body {
   color: #fff;
+  height: 100vh;
+  max-height: 100vh;
   max-width: 100vw;
-  min-height: 100vh;
+  overflow-y: auto;
   color-scheme: dark light;
 }
 

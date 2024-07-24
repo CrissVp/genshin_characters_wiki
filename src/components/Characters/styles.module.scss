@@ -1,67 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 .characters_container {
-    gap: 20px;
-    display: grid;
-    place-content: center;
-    grid-template-columns: repeat(auto-fill, 180px);
+  gap: 20px;
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(auto-fill, 180px);
 }
 
 .character_card_container {
-    width: 180px;
-    height: 225px;
-    position: relative;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-image: url('/characterCardBg.png');
+  width: 180px;
+  height: 225px;
+  position: relative;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url('/characterCardBg.png');
 
-    .character_card {
-        top: 10%;
-        left: 50%;
-        width: 124px;
-        height: 124px;
-        position: absolute;
-        border-radius: 50%;
-        transform: translateX(-50%);
-        border: 2px solid #4a5366;
+  .character_card {
+    top: 10%;
+    left: 50%;
+    width: 124px;
+    height: 124px;
+    position: absolute;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #4a5366;
 
-        .vision_img {
-            top: 0px;
-            left: 0px;
-            width: 24px;
-            height: 24px;
-            padding: 4px;
-            position: absolute;
-            background: #323947;
-            border: 1px solid #4a5366;
-        }
-
-        img {
-            border-radius: 50%;
-        }
+    img {
+      border-radius: 50%;
     }
+  }
 
-    .character_details {
-        left: 50%;
-        bottom: 10px;
-        height: 50px;
-        width: 140px;
-        display: flex;
-        position: absolute;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(-50%);
+  .character_details {
+    left: 50%;
+    bottom: 10px;
+    height: 50px;
+    width: 140px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
 
-        h4 {
-            font-size: 18px;
-            font-weight: 500;
-            color: #d5d5d5;
-            text-align: center;
-            font-family: 'Do Hyeon', sans-serif;
-        }
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #d5d5d5;
+      text-align: center;
+      font-family: 'Do Hyeon', sans-serif;
     }
+  }
 
-    &:hover {
-        transform: scale(1.04);
-    }
+  &:hover {
+    transform: scale(1.04);
+  }
 }
+

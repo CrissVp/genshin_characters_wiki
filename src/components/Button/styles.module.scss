@@ -1,43 +1,42 @@
 .button {
-    gap: 5px;
-    border: none;
-    outline: none;
-    display: flex;
-    font-size: 15px;
-    padding: 8px 25px;
-    align-items: center;
-    white-space: nowrap;
-    border-radius: 999px;
-    color: hsla(0, 0%, 100%, .45);
-    font-family: 'Acme', sans-serif;
-    background: rgba(0, 0, 0, .15);
+  gap: 5px;
+  border: none;
+  outline: none;
+  display: flex;
+  font-size: 15px;
+  padding: 8px 25px;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  color: hsla(0, 0%, 100%, 0.45);
+  font-family: "Acme", sans-serif;
+  background: rgba(0, 0, 0, 0.15);
 
-    &:hover {
-        path {
-            fill: #d3bc8e;
-            fill-opacity: 1
-        }
-
-        color: #d3bc8e;
-        background: hsla(40, 44%, 69%, .1);
+  &:hover {
+    path {
+      fill: #d3bc8e;
+      fill-opacity: 1;
     }
+
+    color: #d3bc8e;
+    background: hsla(40, 44%, 69%, 0.1);
+  }
 }
 
-
 .button_active {
-    color: #d3bc8e;
-    border: 1px solid #d3bc8e;
-    background: hsla(40, 44%, 69%, .06);
+  color: #d3bc8e;
+  border: 1px solid #d3bc8e;
+  background: hsla(40, 44%, 69%, 0.06);
 
-    path {
-        fill: #d3bc8e;
-        fill-opacity: 1
-    }
+  path {
+    fill: #d3bc8e;
+    fill-opacity: 1;
+  }
 }
 
 @media (width < 992px) {
-    .button {
-        font-size: 14px;
-        padding: 8px 18px;
-    }
+  .button {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
 }
