@@ -1,19 +1,17 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
-import TableComponent from "../TableComponent";
-import ButtonsList from "../ButtonsList";
+import TableComponent from '../TableComponent';
+import ButtonsList from '../ButtonsList';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 export default function AscensionTable({ data, vision }) {
   const buttonsContainer = useRef(null);
   const [pageData, setPageData] = useState(data[1]);
-  const [containerWidth, setContainerWidth] = useState(
-    buttonsContainer.current?.clientWidth,
-  );
+  const [containerWidth, setContainerWidth] = useState(buttonsContainer.current?.clientWidth);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
@@ -21,18 +19,16 @@ export default function AscensionTable({ data, vision }) {
       setContainerWidth(width);
     });
 
-    if (buttonsContainer.current)
-      resizeObserver.observe(buttonsContainer.current);
+    if (buttonsContainer.current) resizeObserver.observe(buttonsContainer.current);
     return () => {
-      if (buttonsContainer.current)
-        resizeObserver.unobserve(buttonsContainer.current);
+      if (buttonsContainer.current) resizeObserver.unobserve(buttonsContainer.current);
     };
   }, []);
 
   if (!data.length) return null;
 
   return (
-    <TableComponent title={"Ascension"} vision={vision}>
+    <TableComponent title={'Ascension'} vision={vision}>
       <div ref={buttonsContainer} className={styles.button_list}>
         <ButtonsList
           items={data}
@@ -57,7 +53,7 @@ export default function AscensionTable({ data, vision }) {
                     <td>{row.values[0]}</td>
                     <td>{row.values[1]}</td>
                   </tr>
-                ),
+                )
             )}
           </tbody>
         </table>
@@ -69,12 +65,7 @@ export default function AscensionTable({ data, vision }) {
             <div className={`${styles.materials}`}>
               {pageData.materials?.map((mat, index) => (
                 <div key={index} className={styles.mat}>
-                  <Image
-                    src={mat.icon_url}
-                    height={20}
-                    width={20}
-                    alt="Material_Pic"
-                  />
+                  <Image src={mat.icon_url} height={20} width={20} alt='Material_Pic' />
                   <span>{mat.name}</span>
                   <span>x {mat.amount}</span>
                 </div>
@@ -86,3 +77,4 @@ export default function AscensionTable({ data, vision }) {
     </TableComponent>
   );
 }
+

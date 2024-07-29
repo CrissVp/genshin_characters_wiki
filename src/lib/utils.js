@@ -10,9 +10,7 @@ export const createRequest = async (url, options) => {
 export const removeTags = (data) => {
   const string = JSON.stringify(data);
   const regex = /(<([^>]+)>)/gi;
-  const fixedString = string
-    .replace(regex, "")
-    .replaceAll("&amp;", "&")
-    .replaceAll("$", "");
+  const fixedString = string.replace(regex, '').replaceAll('&amp;', '&').replaceAll('$', '');
   return JSON.parse(fixedString);
 };
+

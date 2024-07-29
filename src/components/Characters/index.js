@@ -1,22 +1,55 @@
 'use client';
 
-import { memo, useMemo } from 'react';
-import Link from 'next/link';
+import { memo, useMemo, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
+import Filters from '../Filters';
 import IconButton from '../IconButton';
 import styles from './styles.module.scss';
 
 const MemoizedCharacterCard = memo(CharacterCard);
 
-export default function Characters({ characters }) {
+export default function Characters({ charactersData }) {
+  const [filters, setFilters] = useState({});
+  let characters = charactersData;
+
+  if (filters.name) {
+    characters = charactersData.filter((char) =>
+      char.name.toLowerCase().startsWith(filters.name.toLowerCase())
+    );
+  }
+
+  if (filters.element) {
+    characters = characters.filter(
+      (char) => char.filter_values.character_vision?.values[0].toLowerCase() === filters.element
+    );
+  }
+
+  if (filters.weapon) {
+    characters = characters.filter(
+      (char) => char.filter_values.character_weapon?.values[0].toLowerCase() === filters.weapon
+    );
+  }
+
+  if (filters.rarity) {
+    characters = characters.filter(
+      (char) => char.filter_values.character_rarity?.values[0].toLowerCase() === filters.rarity
+    );
+  }
+
   const memoizedCards = useMemo(() => {
     return characters.map((character) => (
       <MemoizedCharacterCard data={character} key={character.entry_page_id} />
     ));
   }, [characters]);
 
-  return <div className={styles.characters_container}>{memoizedCards}</div>;
+  return (
+    <div className={styles.characters_container}>
+      <Filters filters={filters} setFilters={setFilters} />
+      {memoizedCards}
+    </div>
+  );
 }
 
 function CharacterCard({ data }) {
@@ -27,7 +60,6 @@ function CharacterCard({ data }) {
     <Link href={`/character/${data.entry_page_id}`} target='_blank'>
       <div className={styles.character_card_container}>
         <div className={`${styles.character_card} bg_${rarity}`}>
-          {/* <Image src={data.images.bg} alt={`${data.id}_picture`} height={250} width={200} /> */}
           <Image
             src={data.icon_url}
             alt={`${data.name}_picture`}

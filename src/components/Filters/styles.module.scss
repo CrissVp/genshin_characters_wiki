@@ -20,6 +20,7 @@
   height: 100vh;
   padding: 10px;
   position: fixed;
+  max-width: 350px;
   overflow: hidden;
   isolation: isolate;
   transition: all linear 0.3s;
@@ -110,12 +111,17 @@
   border: 1px solid #4a5366;
 }
 
+.filter_active button {
+  background-color: #4a5366 !important;
+}
+
 .rarity_filter ul li button:hover {
   background-color: #4a5366;
 }
 
 .expanded {
   width: 40%;
+  max-width: 350px;
   background-color: rgb(32, 32, 32);
 }
 
@@ -126,4 +132,10 @@
 
 .hidden {
   visibility: hidden;
+}
+
+@media (width < 650px) {
+  .expanded {
+    width: 60%;
+  }
 }

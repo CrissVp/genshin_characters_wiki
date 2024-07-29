@@ -3,14 +3,15 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-import styles from './styles.module.scss';
 import IconButton from '../IconButton';
 import StarsRarity from '../StarsRarity';
+import styles from './styles.module.scss';
 
-const elememts = ['pyro', 'cryo', 'electro', 'geo', 'hydro', 'anemo', 'dendro'];
-const wepons = ['sword', 'greatsword', 'bow', 'catalyst', 'polearm'];
+const elements = ['pyro', 'cryo', 'electro', 'geo', 'hydro', 'anemo', 'dendro'];
+const wepons = ['sword', 'claymore', 'bow', 'catalyst', 'polearm'];
+const rarities = ['5-star', '4-star'];
 
-export default function Filters({ setFilters }) {
+export default function Filters({ filters, setFilters }) {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -28,15 +29,30 @@ export default function Filters({ setFilters }) {
         <div className={`${styles.filters} ${visible ? styles.visible : styles.hidden}`}>
           <div className={styles.search_input}>
             <Image height={15} width={15} src='/magnifing_glass.svg' />
-            <input type='text' />
+            <input
+              type='text'
+              onChange={(e) =>
+                setFilters((current) => ({
+                  ...current,
+                  name: e.target.value
+                }))
+              }
+            />
           </div>
           <div className={styles.filter}>
             <span>Elemental Type</span>
             <ul>
-              {elememts.map((element) => (
-                <li>
-                  <button onClick={() => setFilters((current) => ({ ...current, element }))}>
-                    <IconButton icon={`${element}_vision`} />
+              {elements.map((element) => (
+                <li key={`filter_${element}`}>
+                  <button
+                    onClick={() =>
+                      setFilters((current) => ({
+                        ...current,
+                        element: filters.element !== element ? element : undefined
+                      }))
+                    }
+                  >
+                    <IconButton active={filters.element === element} icon={`${element}_vision`} />
                   </button>
                 </li>
               ))}
@@ -46,9 +62,16 @@ export default function Filters({ setFilters }) {
             <span>Weapon</span>
             <ul>
               {wepons.map((weapon) => (
-                <li>
-                  <button onClick={() => setFilters((current) => ({ ...current, weapon }))}>
-                    <IconButton icon={weapon} />
+                <li key={`filter_${weapon}`}>
+                  <button
+                    onClick={() =>
+                      setFilters((current) => ({
+                        ...current,
+                        weapon: filters.weapon !== weapon ? weapon : undefined
+                      }))
+                    }
+                  >
+                    <IconButton active={filters.weapon === weapon} icon={weapon} />
                   </button>
                 </li>
               ))}
@@ -57,22 +80,21 @@ export default function Filters({ setFilters }) {
           <div className={`${styles.filter} ${styles.rarity_filter}`}>
             <span>Rarity</span>
             <ul>
-              <li>
-                <button
-                  className={styles.rarity_button}
-                  onClick={() => setFilters((current) => ({ ...current, rarity }))}
-                >
-                  <StarsRarity rarity={5} />
-                </button>
-              </li>
-              <li>
-                <button
-                  className={styles.rarity_button}
-                  onClick={() => setFilters((current) => ({ ...current, rarity }))}
-                >
-                  <StarsRarity rarity={4} />
-                </button>
-              </li>
+              {rarities.map((rarity) => (
+                <li className={`${filters.rarity === rarity ? styles.filter_active : ''}`}>
+                  <button
+                    onClick={() =>
+                      setFilters((current) => ({
+                        ...current,
+                        rarity: filters.rarity !== rarity ? rarity : undefined
+                      }))
+                    }
+                    className={styles.rarity_button}
+                  >
+                    <StarsRarity rarity={Number(rarity[0])} />
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

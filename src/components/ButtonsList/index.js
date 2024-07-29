@@ -1,31 +1,26 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
-import Button from "../Button";
-import ArrowButton from "../ArrowButton";
-import styles from "./styles.module.scss";
+import Button from '../Button';
+import ArrowButton from '../ArrowButton';
+import styles from './styles.module.scss';
 
-export default function ButtonsList({
-  items,
-  activeItem,
-  itemOnClick,
-  containerWidth,
-}) {
+export default function ButtonsList({ items, activeItem, itemOnClick, containerWidth }) {
   const buttonList = useRef(null);
   const [scrollButtonsVisible, setScrollButtonsVisible] = useState(false);
 
   const scrollButtonsPrev = () => {
     buttonList.current.firstChild.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "nearest",
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
     });
   };
 
   const scrollButtonsNext = () => {
     buttonList.current.lastChild.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "nearest",
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
     });
   };
 
@@ -62,3 +57,4 @@ export default function ButtonsList({
     </div>
   );
 }
+
