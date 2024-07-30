@@ -64,3 +64,21 @@ a {
 .bg_4-Star {
   background: linear-gradient(180deg, #5e5789, #9c75b7);
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #303030;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #505050;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #686868;
+}
+

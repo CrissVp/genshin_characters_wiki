@@ -9,6 +9,7 @@ import AscensionTable from '@/components/AscensionTable';
 import StarsRarity from '@/components/StarsRarity';
 import Talents from '@/components/Talents';
 import styles from './styles.module.scss';
+import Button from '@/components/Button';
 
 const getCharacterData = async (id) => await CharactersModel.getDataById(id);
 
@@ -43,6 +44,10 @@ export default async function Character({ params }) {
               </div>
               <div className={styles.character_description}>
                 <p>{basicInfo.desc}</p>
+              </div>
+              <div className={styles.info_buttons}>
+                <Button active text={'History'} />
+                <Button active text={'Voice'} />
               </div>
             </div>
             <div className={styles.character_splash}>

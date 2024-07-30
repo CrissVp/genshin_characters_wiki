@@ -81,7 +81,10 @@ export default function Filters({ filters, setFilters }) {
             <span>Rarity</span>
             <ul>
               {rarities.map((rarity) => (
-                <li className={`${filters.rarity === rarity ? styles.filter_active : ''}`}>
+                <li
+                  className={`${filters.rarity === rarity ? styles.filter_active : ''}`}
+                  key={`filter_${rarity}`}
+                >
                   <button
                     onClick={() =>
                       setFilters((current) => ({

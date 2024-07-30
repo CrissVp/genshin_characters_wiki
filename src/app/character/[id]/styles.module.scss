@@ -74,6 +74,21 @@
               font-family: 'Do Hyeon', sans-serif;
             }
           }
+
+          .info_buttons {
+            gap: 10px;
+            display: flex;
+          }
+
+          .info_buttons button {
+            width: 110px;
+            cursor: pointer;
+            justify-content: center;
+          }
+
+          .info_buttons button:hover {
+            background: hsl(40deg 44% 69% / 20%);
+          }
         }
 
         .character_splash {
