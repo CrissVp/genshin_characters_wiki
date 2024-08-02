@@ -1,17 +1,18 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import TableComponent from "../TableComponent";
-import TalentButton from "../TalentButton";
+import { useState } from 'react';
+import Image from 'next/image';
 
-import styles from "./styles.module.scss";
-import { useState } from "react";
+import TableComponent from '../TableComponent';
+import TalentButton from '../TalentButton';
+
+import styles from './styles.module.scss';
 
 export default function Talents({ data, vision }) {
   const [page, setPage] = useState(data.list[0]);
 
   return (
-    <TableComponent title={"Talents"} vision={vision}>
+    <TableComponent title={'Talents'} vision={vision}>
       <div className={styles.talent_buttons}>
         {data.list.map((item, index) => (
           <TalentButton
@@ -20,12 +21,7 @@ export default function Talents({ data, vision }) {
             key={index}
             active={page.key === item.key}
           >
-            <Image
-              src={item.icon_url}
-              height={70}
-              width={70}
-              alt={"Talent_Icon"}
-            />
+            <Image src={item.icon_url} height={70} width={70} alt={'Talent_Icon'} />
           </TalentButton>
         ))}
       </div>
@@ -36,9 +32,9 @@ export default function Talents({ data, vision }) {
               src={page.talent_img}
               width={300}
               height={180}
-              alt="Talent_Pic"
-              placeholder="blur"
-              blurDataURL="/load_img.png"
+              alt='Talent_Pic'
+              placeholder='blur'
+              blurDataURL='/load_img.png'
             />
           </div>
         )}
@@ -50,3 +46,4 @@ export default function Talents({ data, vision }) {
     </TableComponent>
   );
 }
+

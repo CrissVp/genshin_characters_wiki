@@ -86,11 +86,13 @@ export class CharactersModel {
       header_img_url
     });
 
+    console.log(data.modules[5]);
     const attributesData = formatAttributesData(data.modules[0].components[0].data);
     const ascensionData = await formatAscensionData(data.modules[1].components[0].data);
     const galleryData = formatGalleryData(data.modules[2].components[0].data);
     const talentsData = formatTalentsData(data.modules[3].components[0].data);
     const constellationsData = formatConstellationsData(data.modules[4].components[0].data);
+    const descriptionData = data.modules[5].components[0].data;
 
     return {
       basicInfo,
@@ -98,7 +100,8 @@ export class CharactersModel {
       ascensionData,
       galleryData,
       talentsData,
-      constellationsData
+      constellationsData,
+      descriptionData
     };
   }
 }

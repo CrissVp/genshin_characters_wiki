@@ -1,21 +1,28 @@
 import { CharactersModel } from '@/models/CharactersModel';
 import Image from 'next/image';
 
+import CharacterDescription from '@/components/CharacterDescription';
 import ElementalBackground from '@/components/ElementalBackground';
 import CharacterGallery from '@/components/CharacterGallery';
 import AttributesTable from '@/components/AttributesTable';
 import Constellations from '@/components/Constellations';
 import AscensionTable from '@/components/AscensionTable';
+import ModalButton from '@/components/ModalButton';
 import StarsRarity from '@/components/StarsRarity';
 import Talents from '@/components/Talents';
 import styles from './styles.module.scss';
 import Button from '@/components/Button';
 
-const getCharacterData = async (id) => await CharactersModel.getDataById(id);
-
 export default async function Character({ params }) {
-  const { basicInfo, attributesData, ascensionData, galleryData, talentsData, constellationsData } =
-    await getCharacterData(params.id);
+  const {
+    basicInfo,
+    attributesData,
+    ascensionData,
+    galleryData,
+    talentsData,
+    constellationsData,
+    descriptionData
+  } = await CharactersModel.getDataById(params.id);
 
   return (
     <div className={styles.page_container}>
@@ -46,7 +53,9 @@ export default async function Character({ params }) {
                 <p>{basicInfo.desc}</p>
               </div>
               <div className={styles.info_buttons}>
-                <Button active text={'History'} />
+                <ModalButton title={`${basicInfo.name} - History`} buttonLabel={'History'}>
+                  <CharacterDescription description={descriptionData} />
+                </ModalButton>
                 <Button active text={'Voice'} />
               </div>
             </div>

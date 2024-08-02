@@ -14,12 +14,6 @@ export default function Characters({ charactersData }) {
   const [filters, setFilters] = useState({});
   let characters = charactersData;
 
-  if (filters.name) {
-    characters = charactersData.filter((char) =>
-      char.name.toLowerCase().startsWith(filters.name.toLowerCase())
-    );
-  }
-
   if (filters.element) {
     characters = characters.filter(
       (char) => char.filter_values.character_vision?.values[0].toLowerCase() === filters.element
@@ -35,6 +29,12 @@ export default function Characters({ charactersData }) {
   if (filters.rarity) {
     characters = characters.filter(
       (char) => char.filter_values.character_rarity?.values[0].toLowerCase() === filters.rarity
+    );
+  }
+
+  if (filters.name) {
+    characters = charactersData.filter((char) =>
+      char.name.toLowerCase().startsWith(filters.name.toLowerCase())
     );
   }
 

@@ -1,0 +1,21 @@
+.description {
+  gap: 10px;
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+}
+
+.description h2 {
+  font-size: 18px;
+}
+
+.description div {
+  opacity: 0.8;
+}
+
+.divisor {
+  height: 1px;
+  width: 100%;
+  margin-block: 20px;
+  background-color: #ffffff3a;
+}
