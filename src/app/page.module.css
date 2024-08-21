@@ -1,25 +1,30 @@
 .main {
-  z-index: 10;
-  padding: 2vh;
-  display: flex;
-  position: relative;
-  flex-direction: column;
+	z-index: 10;
+	padding: 2vh;
+	display: flex;
+	position: relative;
+	flex-direction: column;
 }
 
 .background {
-  background: url('/genshin_background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  filter: blur(3px);
-  height: 100vh;
-  z-index: 0;
-  inset: 0;
+	background: url('/genshin_background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	filter: blur(3px);
+	height: 100vh;
+	z-index: 0;
+	inset: 0;
 }
 
 .logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5vh;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 5vh;
 }
 
+@media (width < 500px) {
+  .main {
+    padding: 6px;
+  }
+}

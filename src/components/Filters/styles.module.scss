@@ -74,6 +74,7 @@
   width: 100%;
   border: none;
   outline: none;
+  color: #fff;
   background-color: transparent;
 }
 .search_input:focus-within {
@@ -137,5 +138,11 @@
 @media (width < 650px) {
   .expanded {
     width: 60%;
+  }
+}
+
+@media (width < 500px) {
+  .expanded {
+    width: 100%;
   }
 }

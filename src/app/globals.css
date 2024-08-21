@@ -1,84 +1,83 @@
 :root {
-  --pyro-bg: #3d1818;
-  --cryo-bg: #09375c;
-  --electro-bg: #2a1a67;
-  --geo-bg: #3d3015;
-  --hydro-bg: #15315c;
-  --anemo-bg: #153434;
-  --dendro-bg: #183d12;
+	--pyro-bg: #3d1818;
+	--cryo-bg: #09375c;
+	--electro-bg: #2a1a67;
+	--geo-bg: #3d3015;
+	--hydro-bg: #15315c;
+	--anemo-bg: #153434;
+	--dendro-bg: #183d12;
 }
 
 * {
-  box-sizing: content-box;
-  padding: 0;
-  margin: 0;
+	box-sizing: content-box;
+	padding: 0;
+	margin: 0;
 }
 
 html,
 body {
-  color: #fff;
-  height: 100vh;
-  max-height: 100vh;
-  max-width: 100vw;
-  overflow-y: auto;
-  color-scheme: dark light;
+	color: #fff;
+	overflow-y: auto;
+	height: 100lvh;
+	max-width: 100vw;
+	max-height: 100lvh;
+	color-scheme: dark light;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 .bg_pyro {
-  background-color: var(--pyro-bg);
+	background-color: var(--pyro-bg);
 }
 
 .bg_hydro {
-  background-color: var(--hydro-bg);
+	background-color: var(--hydro-bg);
 }
 
 .bg_cryo {
-  background-color: var(--cryo-bg);
+	background-color: var(--cryo-bg);
 }
 
 .bg_geo {
-  background-color: var(--geo-bg);
+	background-color: var(--geo-bg);
 }
 
 .bg_electro {
-  background-color: var(--electro-bg);
+	background-color: var(--electro-bg);
 }
 
 .bg_anemo {
-  background-color: var(--anemo-bg);
+	background-color: var(--anemo-bg);
 }
 
 .bg_dendro {
-  background-color: var(--dendro-bg);
+	background-color: var(--dendro-bg);
 }
 
 .bg_5-Star {
-  background: linear-gradient(180deg, #945c2c, #b27330);
+	background: linear-gradient(180deg, #945c2c, #b27330);
 }
 
 .bg_4-Star {
-  background: linear-gradient(180deg, #5e5789, #9c75b7);
+	background: linear-gradient(180deg, #5e5789, #9c75b7);
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+	width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #303030;
+	background: #303030;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background: #505050;
+	border-radius: 5px;
+	background: #505050;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #686868;
+	background: #686868;
 }
-

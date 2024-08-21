@@ -1,57 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 .characters_container {
-  gap: 20px;
-  display: grid;
-  place-content: center;
-  grid-template-columns: repeat(auto-fill, 180px);
+	--card-width: 180px;
+	--card-height: 225px;
+
+	gap: 20px;
+	display: grid;
+	place-content: center;
+	grid-template-columns: repeat(auto-fill, var(--card-width));
 }
 
-.character_card_container {
-  width: 180px;
-  height: 225px;
-  position: relative;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-image: url('/characterCardBg.png');
+.character_card {
+	position: relative;
+	width: var(--card-width);
+	height: var(--card-height);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-image: url('/characterCardBg.png');
 
-  .character_card {
-    top: 10%;
-    left: 50%;
-    width: 124px;
-    height: 124px;
-    position: absolute;
-    border-radius: 50%;
-    transform: translateX(-50%);
-    border: 2px solid #4a5366;
+	.character_img_container {
+		top: 10%;
+		left: 50%;
+		width: 124px;
+		height: 124px;
+		position: absolute;
+		border-radius: 50%;
+		transform: translateX(-50%);
+		border: 2px solid #4a5366;
 
-    img {
-      border-radius: 50%;
-    }
-  }
+		.character_img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+	}
 
-  .character_details {
-    left: 50%;
-    bottom: 10px;
-    height: 50px;
-    width: 140px;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    transform: translateX(-50%);
+	.character_details {
+		left: 50%;
+		bottom: 10px;
+		height: 50px;
+		width: 140px;
+		display: flex;
+		position: absolute;
+		align-items: center;
+		justify-content: center;
+		transform: translateX(-50%);
 
-    h4 {
-      font-size: 18px;
-      font-weight: 500;
-      color: #d5d5d5;
-      text-align: center;
-      font-family: 'Do Hyeon', sans-serif;
-    }
-  }
+		h4 {
+			font-size: 18px;
+			font-weight: 500;
+			color: #d5d5d5;
+			text-align: center;
+			font-family: 'Do Hyeon', sans-serif;
+		}
+	}
 
-  &:hover {
-    transform: scale(1.04);
-  }
+	&:hover {
+		transform: scale(1.04);
+	}
 }
 
+@media (width < 500px) {
+	.characters_container {
+		gap: 6px;
+		--card-width: 110px;
+		--card-height: 160px;
+	}
+
+	.character_card {
+		.character_img_container {
+			height: 80px;
+			width: 80px;
+		}
+    
+    .character_details {
+      width: 90px;
+      height: 36px;
+
+      h4 {
+        font-size: 14px;
+      }
+    }
+	}
+}

@@ -58,9 +58,10 @@ function CharacterCard({ data }) {
 
   return (
     <Link href={`/character/${data.entry_page_id}`} target='_blank'>
-      <div className={styles.character_card_container}>
-        <div className={`${styles.character_card} bg_${rarity}`}>
+      <div className={styles.character_card}>
+        <div className={`${styles.character_img_container} bg_${rarity}`}>
           <Image
+            className={styles.character_img}
             src={data.icon_url}
             alt={`${data.name}_picture`}
             height={124}

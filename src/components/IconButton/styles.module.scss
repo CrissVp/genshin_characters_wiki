@@ -17,3 +17,10 @@
 .active {
   background: #4a5366;
 }
+
+@media (width < 500px) {
+  .image {
+    width: 20px;
+    height: 20px;
+  }
+}

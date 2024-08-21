@@ -102,7 +102,7 @@ export default function Filters({ filters, setFilters }) {
           </div>
           <div>
             <span>More filters</span>
-            <ul></ul>
+            {/* <ul></ul> */}
           </div>
         </div>
       </div>
