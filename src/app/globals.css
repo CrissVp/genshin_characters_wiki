@@ -57,6 +57,10 @@ a {
 	background-color: var(--dendro-bg);
 }
 
+.bg_- {
+	background-color: #3b4354;
+}
+
 .bg_5-Star {
 	background: linear-gradient(180deg, #945c2c, #b27330);
 }

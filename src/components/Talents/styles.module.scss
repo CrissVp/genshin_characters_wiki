@@ -1,6 +1,7 @@
 .talent_buttons {
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
   margin-bottom: 20px;
 
   &::-webkit-scrollbar {

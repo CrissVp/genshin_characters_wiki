@@ -18,10 +18,10 @@ export default function Talents({ data, vision }) {
 			<div className={styles.talent_buttons}>
 				{data.list.map((item, index) => (
 					<TalentButton
-						vision={vision}
-						handleClick={() => setPage(item)}
 						key={index}
-						active={page.key === item.key}
+						vision={vision}
+						active={page.id === item.id}
+						handleClick={() => setPage(item)}
 					>
 						<Image src={item.icon_url} height={70} width={70} alt={'Talent_Icon'} />
 					</TalentButton>

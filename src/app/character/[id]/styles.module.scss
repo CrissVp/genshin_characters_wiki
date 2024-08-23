@@ -293,6 +293,11 @@
 			--transparency: rgba(17, 66, 13, 0);
 		}
 
+		.default {
+			--active-el: #323947;
+			--transparency: rgba(72, 94, 119, 0);
+		}
+
 		.main {
 			background-color: var(--active-el);
 

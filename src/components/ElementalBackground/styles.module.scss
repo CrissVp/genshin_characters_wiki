@@ -11,6 +11,10 @@
   object-fit: cover;
 }
 
+.default {
+  background-color: #323947;
+}
+
 @media (width < 600px) {
   .background {
     display: none;

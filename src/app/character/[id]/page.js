@@ -28,7 +28,7 @@ export default async function Character({ params }) {
 
 	return (
 		<div className={styles.page_container}>
-			<main className={`${styles.main} ${styles[vision.toLowerCase()]}`}>
+			<main className={`${styles.main} ${styles[vision.toLowerCase()] || styles.default}`}>
 				<div className={styles.content}>
 					<section className={styles.info_section}>
 						<div className={styles.character_info}>
@@ -58,17 +58,16 @@ export default async function Character({ params }) {
 									<span>{basicInfo.name}</span>
 									<StarsRarity rarity={Number(basicInfo.rarity?.substr(0, 1))} />
 								</div>
-								<div className={styles.character_vision}>
-									<Image
-										src={`/${vision.toLowerCase()}_vision.png`}
-										alt={'character_vision'}
-										width={30}
-										height={30}
-									/>
-								</div>
-								{/* <div className={styles.characer_rarity}>
-									<StarsRarity rarity={Number(basicInfo.rarity?.substr(0, 1))} />
-								</div> */}
+								{vision !== '-' && (
+									<div className={styles.character_vision}>
+										<Image
+											src={`/${vision.toLowerCase()}_vision.png`}
+											alt={'character_vision'}
+											width={30}
+											height={30}
+										/>
+									</div>
+								)}
 							</div>
 							<div className={styles.character_description}>
 								<p>{basicInfo.desc}</p>
@@ -85,14 +84,16 @@ export default async function Character({ params }) {
 						</div>
 						{basicInfo.header_img_url && (
 							<div className={styles.character_splash}>
-								<Image
-									className={styles.character_bg}
-									src={`/${vision.toLowerCase()}_mv_bg.png`}
-									alt={`character_bg`}
-									height={450}
-									width={600}
-									quality={80}
-								/>
+								{vision !== '-' && (
+									<Image
+										className={styles.character_bg}
+										src={`/${vision.toLowerCase()}_mv_bg.png`}
+										alt={`character_bg`}
+										height={450}
+										width={600}
+										quality={80}
+									/>
+								)}
 								<Image
 									className={styles.splash_img}
 									src={basicInfo.header_img_url}

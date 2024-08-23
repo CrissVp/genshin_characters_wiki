@@ -1,194 +1,209 @@
 .talent_button {
-  opacity: 0.65;
-  width: 112px;
-  height: 112px;
-  display: flex;
-  position: relative;
-  align-items: center;
-  pointer-events: none;
-  justify-content: center;
+	opacity: 0.65;
+	width: 112px;
+	height: 112px;
+	display: flex;
+	position: relative;
+	align-items: center;
+	pointer-events: none;
+	justify-content: center;
 
-  &:hover {
-    opacity: 1;
+	&:hover {
+		opacity: 1;
 
-    button {
-      cursor: pointer;
-    }
-  }
+		button {
+			cursor: pointer;
+		}
+	}
 
-  button {
-    width: 70px;
-    height: 70px;
-    border: none;
-    outline: none;
-    border-radius: 50%;
-    pointer-events: auto;
-    background-color: transparent;
-    border: 2px solid hsla(0, 0%, 100%, 0.25);
+	button {
+		width: 70px;
+		height: 70px;
+		border: none;
+		outline: none;
+		border-radius: 50%;
+		pointer-events: auto;
+		background-color: transparent;
+		border: 2px solid hsla(0, 0%, 100%, 0.25);
 
-    image {
-      width: 68px;
-      height: 68px;
-    }
-  }
+		image {
+			width: 68px;
+			height: 68px;
+		}
+	}
 
-  svg {
-    width: 115px;
-    height: 115px;
-    position: absolute;
-    visibility: hidden;
-  }
+	svg {
+		width: 115px;
+		height: 115px;
+		position: absolute;
+		visibility: hidden;
+	}
 }
 
 .button_active {
-  opacity: 1;
+	opacity: 1;
+}
+
+.border_default {
+	button {
+		border: 2px solid rgba(113, 138, 185, 0.45);
+	}
+
+	svg {
+		visibility: visible;
+
+		path {
+			fill: rgb(113, 138, 185, 0.85);
+			fill-opacity: 1;
+		}
+	}
 }
 
 .border_anemo {
-  button {
-    border: 2px solid rgba(51, 215, 160, 0.85);
-  }
+	button {
+		border: 2px solid rgba(51, 215, 160, 0.85);
+	}
 
-  svg {
-    visibility: visible;
+	svg {
+		visibility: visible;
 
-    path {
-      fill: rgba(51, 215, 160, 0.45);
-      fill-opacity: 1;
-    }
-  }
+		path {
+			fill: rgba(51, 215, 160, 0.45);
+			fill-opacity: 1;
+		}
+	}
 }
 
 .border_hydro {
-  button {
-    border: 2px solid rgba(0, 192, 255, 0.85);
-  }
+	button {
+		border: 2px solid rgba(0, 192, 255, 0.85);
+	}
 
-  svg {
-    visibility: visible;
+	svg {
+		visibility: visible;
 
-    path {
-      fill: rgba(0, 192, 255, 0.45);
-      fill-opacity: 1;
-    }
-  }
+		path {
+			fill: rgba(0, 192, 255, 0.45);
+			fill-opacity: 1;
+		}
+	}
 }
 
 .border_cryo {
-  button {
-    border: 2px solid rgba(122, 242, 242, 0.85);
-  }
+	button {
+		border: 2px solid rgba(122, 242, 242, 0.85);
+	}
 
-  svg {
-    visibility: visible;
+	svg {
+		visibility: visible;
 
-    path {
-      fill: rgba(122, 242, 242, 0.45);
-      fill-opacity: 1;
-    }
-  }
+		path {
+			fill: rgba(122, 242, 242, 0.45);
+			fill-opacity: 1;
+		}
+	}
 }
 
 .border_pyro {
-  button {
-    border: 2px solid rgba(255, 102, 64, 0.85);
-  }
+	button {
+		border: 2px solid rgba(255, 102, 64, 0.85);
+	}
 
-  svg {
-    visibility: visible;
+	svg {
+		visibility: visible;
 
-    path {
-      fill: rgba(255, 102, 64, 0.45);
-      fill-opacity: 1;
-    }
-  }
+		path {
+			fill: rgba(255, 102, 64, 0.45);
+			fill-opacity: 1;
+		}
+	}
 }
 
 .border_electro {
-  button {
-    border: 2px solid rgba(204, 128, 255, 0.85);
-  }
+	button {
+		border: 2px solid rgba(204, 128, 255, 0.85);
+	}
 
-  svg {
-    visibility: visible;
+	svg {
+		visibility: visible;
 
-    path {
-      fill: rgba(204, 128, 255, 0.45);
-      fill-opacity: 1;
-    }
-  }
+		path {
+			fill: rgba(204, 128, 255, 0.45);
+			fill-opacity: 1;
+		}
+	}
 }
 
 .border_dendro {
-  button {
-    border: 2px solid rgba(51, 215, 160, 0.85);
-  }
+	button {
+		border: 2px solid rgba(51, 215, 160, 0.85);
+	}
 
-  svg {
-    visibility: visible;
+	svg {
+		visibility: visible;
 
-    path {
-      fill: rgba(51, 215, 160, 0.45);
-      fill-opacity: 1;
-    }
-  }
+		path {
+			fill: rgba(51, 215, 160, 0.45);
+			fill-opacity: 1;
+		}
+	}
 }
 
 .border_geo {
-  button {
-    border: 2px solid rgba(255, 176, 13, 0.85);
-  }
+	button {
+		border: 2px solid rgba(255, 176, 13, 0.85);
+	}
 
-  svg {
-    visibility: visible;
+	svg {
+		visibility: visible;
 
-    path {
-      fill: rgba(255, 176, 13, 0.45);
-      fill-opacity: 1;
-    }
-  }
+		path {
+			fill: rgba(255, 176, 13, 0.45);
+			fill-opacity: 1;
+		}
+	}
 }
 
 @media only screen and (width < 992px) {
-  .talent_button {
-    width: 100px;
-    height: 100px;
+	.talent_button {
+		width: 100px;
+		height: 100px;
 
-    svg {
-      width: 103px;
-      height: 103px;
-    }
+		svg {
+			width: 103px;
+			height: 103px;
+		}
 
-    button {
-      width: 60px;
-      height: 60px;
+		button {
+			width: 60px;
+			height: 60px;
 
-      img {
-        width: 60px;
-        height: 60px;
-      }
-    }
-  }
+			img {
+				width: 60px;
+				height: 60px;
+			}
+		}
+	}
 }
 
 @media (width < 600px) {
-  .talent_button {
-    min-width: 75px;
-    height: 85px;
+	.talent_button {
+		min-width: 75px;
+		height: 85px;
 
-    svg {
-      width: 83px;
-      height: 83px;
-    }
+		svg {
+			width: 83px;
+			height: 83px;
+		}
 
-    button {
-      width: 50px;
-      height: 50px;
+		button {
+			width: 50px;
+			height: 50px;
 
-      img {
-        width: 50px;
-        height: 50px;
-      }
-    }
-  }
+			img {
+				width: 50px;
+				height: 50px;
+			}
+		}
+	}
 }
