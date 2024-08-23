@@ -310,10 +310,11 @@
 					.character_info {
 						gap: 10px;
 						z-index: 5;
-						transform: translateY(-40px);
+						position: relative;
+						bottom: 40px;
 
 						&:has(+ .character_splash) {
-							transform: translateY(-100px);
+							bottom: 100px;
 
 							.character_icon {
 								display: none;

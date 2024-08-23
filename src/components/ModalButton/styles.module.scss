@@ -56,3 +56,16 @@
   opacity: 1;
   background-color: #475062;
 }
+
+@media (width < 600px) {
+  .modal_container {
+    .modal {
+      height: 100dvh;
+      border-radius: unset;
+
+      .content {
+        height: 100dvh;
+      }
+    }
+  }
+}
