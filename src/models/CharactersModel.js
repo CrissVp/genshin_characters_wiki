@@ -1,4 +1,4 @@
-import { createRequest, removeTags } from '../lib/utils';
+import { createRequest, getObjectFromJson, removeTags } from '../lib/utils';
 import { MaterialsModel } from './MaterialsModel';
 
 export class CharactersModel {
@@ -88,10 +88,11 @@ export class CharactersModel {
 
 		const attributesData = formatAttributesData(data.modules[0].components[0].data);
 		const ascensionData = await formatAscensionData(data.modules[1].components[0].data);
-		const galleryData = formatGalleryData(data.modules[2].components[0].data);
-		const talentsData = formatTalentsData(data.modules[3].components[0].data);
-		const constellationsData = formatConstellationsData(data.modules[4].components[0].data);
-		const descriptionData = data.modules[5].components[0].data;
+		const galleryData = getObjectFromJson(data.modules[2].components[0].data);
+		const talentsData = getObjectFromJson(data.modules[3].components[0].data);
+		const constellationsData = getObjectFromJson(data.modules[4].components[0].data);
+		const descriptionData = getObjectFromJson(data.modules[5].components[0].data);
+		const voiceOver = getObjectFromJson(data.modules[6].components[0].data);
 
 		return {
 			basicInfo,
@@ -100,7 +101,8 @@ export class CharactersModel {
 			galleryData,
 			talentsData,
 			constellationsData,
-			descriptionData
+			descriptionData,
+			voiceOver
 		};
 	}
 }
@@ -145,14 +147,4 @@ const formatAscensionData = async (data) => {
 			return { key, combatList, materials: fixedMaterials };
 		})
 	);
-};
-
-const formatGalleryData = (data) => {
-	if (data) return JSON.parse(data);
-};
-const formatTalentsData = (data) => {
-	if (data) return JSON.parse(data);
-};
-const formatConstellationsData = (data) => {
-	if (data) return JSON.parse(data);
 };

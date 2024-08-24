@@ -1,11 +1,9 @@
 import styles from './styles.module.scss';
 
 export default function CharacterDescription({ description }) {
-	const descriptionData = JSON.parse(description);
-
 	return (
 		<>
-			{descriptionData.list.map((section) => (
+			{description.list.map((section) => (
 				<>
 					<div className={styles.divisor}></div>
 					<div key={`desc_${section.title}`} className={styles.description}>

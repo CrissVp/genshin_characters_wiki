@@ -25,11 +25,13 @@
 				min-height: 350px;
 
 				.character_info {
-					gap: 30px;
+					gap: 20px;
 					flex: 1;
+					top: 40px;
+					height: 100%;
 					display: flex;
+					position: relative;
 					flex-direction: column;
-					justify-content: center;
 
 					.character_details {
 						gap: 10px;
@@ -123,6 +125,10 @@
 			}
 
 			&:has(.character_splash) {
+				.character_info {
+					top: 80px;
+				}
+
 				.info_tables {
 					transform: translateY(-120px);
 				}
@@ -189,6 +195,7 @@
 
 					.character_info {
 						padding: 20px;
+						padding-top: 0;
 
 						.character_details {
 							.character_name {
@@ -201,7 +208,7 @@
 
 						.character_description {
 							p {
-								font-size: 15px;
+								font-size: 14px;
 							}
 						}
 					}
@@ -226,6 +233,7 @@
 			.content {
 				.info_section {
 					.character_info {
+						top: 40px;
 						padding: 0;
 						padding-left: 20px;
 						min-width: 250px;
@@ -310,10 +318,10 @@
 					.character_info {
 						gap: 10px;
 						z-index: 5;
-						position: relative;
-						bottom: 40px;
+						top: 40px;
 
 						&:has(+ .character_splash) {
+							top: unset;
 							bottom: 100px;
 
 							.character_icon {

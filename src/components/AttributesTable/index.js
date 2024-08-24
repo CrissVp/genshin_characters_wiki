@@ -8,7 +8,7 @@ export default function AttributesTable({ attributes, vision }) {
 				{Object.entries(attributes).map(
 					([key, value]) =>
 						value && (
-							<div className={styles.attribute_row}>
+							<div className={styles.attribute_row} key={`${key}_row`}>
 								<span>{key}</span>
 								<p>{value}</p>
 							</div>
