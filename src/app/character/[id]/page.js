@@ -9,8 +9,8 @@ import Constellations from '@/components/Constellations';
 import AscensionTable from '@/components/AscensionTable';
 import ModalButton from '@/components/ModalButton';
 import StarsRarity from '@/components/StarsRarity';
+import VoiceOver from '@/components/VoiceOver';
 import Talents from '@/components/Talents';
-import Button from '@/components/Button';
 import styles from './styles.module.scss';
 
 export default async function Character({ params }) {
@@ -79,7 +79,11 @@ export default async function Character({ params }) {
 									<ModalButton title={`${basicInfo.name} - History`} buttonLabel={'History'}>
 										<CharacterDescription description={descriptionData} />
 									</ModalButton>
-									<Button active text={'Voice'} />
+									{voiceOver && (
+										<ModalButton title={`${basicInfo.name} - Voice Over`} buttonLabel={'Voice'}>
+											<VoiceOver voiceData={voiceOver} />
+										</ModalButton>
+									)}
 								</div>
 							)}
 						</div>

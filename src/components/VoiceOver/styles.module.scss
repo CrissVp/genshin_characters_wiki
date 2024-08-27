@@ -1,0 +1,28 @@
+.container {
+  gap: 10px 20px;
+	padding: 10px;
+	display: grid;
+	border-radius: 10px;
+	background-color: #282d38;
+	grid-template-columns: 1fr 1fr;
+}
+
+.audio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.audio audio {
+  height: 30px;
+}
+
+@media (width < 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    
+    .audio {
+      justify-content: space-around
+    }
+  }
+}
