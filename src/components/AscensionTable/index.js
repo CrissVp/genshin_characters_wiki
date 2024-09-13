@@ -7,6 +7,7 @@ import TableComponent from '../TableComponent';
 import ButtonsList from '../ButtonsList';
 
 import styles from './styles.module.scss';
+import { basePath } from '../../../next.config';
 
 export default function AscensionTable({ data, vision }) {
 	const buttonsContainer = useRef(null);
@@ -67,7 +68,12 @@ export default function AscensionTable({ data, vision }) {
 						<div className={`${styles.materials}`}>
 							{pageData.materials?.map((mat, index) => (
 								<div key={index} className={styles.mat}>
-									<Image src={mat.icon_url} height={20} width={20} alt='Material_Pic' />
+									<Image
+										height={20}
+										width={20}
+										alt='Material_Pic'
+										src={mat.icon_url || `${basePath}/load_img.png`}
+									/>
 									<span>{mat.name}</span>
 									<span>x {mat.amount}</span>
 								</div>

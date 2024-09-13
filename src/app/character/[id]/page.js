@@ -1,4 +1,5 @@
 import { CharactersModel } from '@/models/CharactersModel';
+import { basePath } from '../../../../next.config';
 import Image from 'next/image';
 
 import CharacterDescription from '@/components/CharacterDescription';
@@ -62,7 +63,7 @@ export default async function Character({ params }) {
 								{vision !== '-' && (
 									<div className={styles.character_vision}>
 										<Image
-											src={`/${vision.toLowerCase()}_vision.png`}
+											src={`${basePath}/${vision.toLowerCase()}_vision.png`}
 											alt={'character_vision'}
 											width={30}
 											height={30}
@@ -92,7 +93,7 @@ export default async function Character({ params }) {
 								{vision !== '-' && (
 									<Image
 										className={styles.character_bg}
-										src={`/${vision.toLowerCase()}_mv_bg.png`}
+										src={`${basePath}/${vision.toLowerCase()}_mv_bg.png`}
 										alt={`character_bg`}
 										height={450}
 										width={600}

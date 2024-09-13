@@ -7,7 +7,7 @@
 }
 
 .background {
-	background: url('/genshin_background.jpg');
+	background: url('/genshin_characters_wiki/genshin_background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: absolute;
@@ -24,7 +24,7 @@
 }
 
 @media (width < 500px) {
-  .main {
-    padding: 6px;
-  }
+	.main {
+		padding: 6px;
+	}
 }
