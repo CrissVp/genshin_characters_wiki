@@ -14,6 +14,12 @@ import VoiceOver from '@/components/VoiceOver';
 import Talents from '@/components/Talents';
 import styles from './styles.module.scss';
 
+export async function getStaticPaths() {
+	const characters = await CharactersModel.getAll();
+	const paths = characters.map((char) => ({ params: { id: char.entry_page_id } }));
+	return { paths, fallback: false };
+}
+
 export default async function Character({ params }) {
 	const {
 		basicInfo,
