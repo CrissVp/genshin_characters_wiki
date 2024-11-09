@@ -1,87 +1,82 @@
 .gallery_container {
-  display: flex;
+	display: flex;
 
-  .gallery {
-    gap: 20px;
-    flex-grow: 1;
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
+	.gallery {
+		gap: 20px;
+		flex-grow: 1;
+		display: flex;
+		overflow: hidden;
+		flex-direction: column;
 
-    .character_pics {
-      display: flex;
-      transition: transform 0.2s ease;
+		.character_pics {
+			display: flex;
+			transition: transform 0.2s ease;
 
-      .gallery_item {
-        min-width: 800px;
-        scroll-snap-align: start;
+			.gallery_item {
+				min-width: 800px;
+				scroll-snap-align: start;
 
-        .gallery_pic {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+				.gallery_pic {
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
 
-          img {
-            width: 450px;
-            height: 450px;
-            border-radius: 15px;
-          }
-        }
+					img {
+						width: auto;
+						height: 450px;
+						border-radius: 15px;
+					}
+				}
 
-        .gallery_desc {
-          font-size: 14px;
-          margin-top: 20px;
-          color: hsla(0, 0%, 100%, 0.65);
-          font-family: "Do Hyeon", sans-serif;
-        }
-      }
-    }
-  }
+				.gallery_desc {
+					font-size: 14px;
+					margin-top: 20px;
+          line-height: 1.6;
+					font-family: var(--ff-tahoma);
+					color: hsla(0, 0%, 100%, 0.65);
+				}
+			}
+		}
+	}
 
-  .character_card {
-    width: 225px;
-    margin-left: 27px;
+	.character_card {
+		width: 225px;
+		margin-left: 27px;
 
-    h4 {
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 20px;
-      color: hsla(0, 0%, 100%, 0.65);
-      font-family: "Acme", sans-serif;
-    }
+		h4 {
+			font-size: 20px;
+			font-weight: 500;
+			margin-bottom: 32px;
+			font-family: var(--ff-acme);
+			color: hsla(0, 0%, 100%, 0.65);
+		}
 
-    img {
-      border-radius: 15px;
-    }
-  }
-}
-
-.card {
-  img {
-    width: 300px !important;
-  }
+		img {
+			border-radius: 15px;
+		}
+	}
 }
 
 @media only screen and (width < 1200px) {
-  .character_card {
-    display: none;
-  }
+	.character_card {
+		display: none;
+	}
 }
 
 @media only screen and (width < 500px) {
-  .gallery_container {
-    .gallery {
-      .character_pics {
-        .gallery_item {
-          .gallery_pic {
-            img {
-              width: 100%;
-              height: auto;
-            }
-          }
-        }
-      }
-    }
-  }
+	.gallery_container {
+		.gallery {
+			.character_pics {
+				.gallery_item {
+					.gallery_pic {
+						img {
+							width: 100%;
+							height: auto;
+						}
+					}
+				}
+			}
+		}
+	}
 }

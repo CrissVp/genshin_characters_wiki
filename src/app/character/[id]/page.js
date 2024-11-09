@@ -1,5 +1,4 @@
-import { CharactersModel } from '@/models/CharactersModel';
-import { basePath } from '../../../../next.config';
+import { getDataById } from '@/services/characters';
 import Image from 'next/image';
 
 import CharacterDescription from '@/components/CharacterDescription';
@@ -14,12 +13,6 @@ import VoiceOver from '@/components/VoiceOver';
 import Talents from '@/components/Talents';
 import styles from './styles.module.scss';
 
-export async function getStaticPaths() {
-	const characters = await CharactersModel.getAll();
-	const paths = characters.map((char) => ({ params: { id: char.entry_page_id } }));
-	return { paths, fallback: false };
-}
-
 export default async function Character({ params }) {
 	const {
 		basicInfo,
@@ -30,7 +23,7 @@ export default async function Character({ params }) {
 		constellationsData,
 		descriptionData,
 		voiceOver
-	} = await CharactersModel.getDataById(params.id);
+	} = await getDataById(params.id);
 
 	const vision = basicInfo.vision || attributesData.Vision;
 
@@ -69,7 +62,7 @@ export default async function Character({ params }) {
 								{vision !== '-' && (
 									<div className={styles.character_vision}>
 										<Image
-											src={`${basePath}/${vision.toLowerCase()}_vision.png`}
+											src={`/${vision.toLowerCase()}_vision.png`}
 											alt={'character_vision'}
 											width={30}
 											height={30}
@@ -99,7 +92,7 @@ export default async function Character({ params }) {
 								{vision !== '-' && (
 									<Image
 										className={styles.character_bg}
-										src={`${basePath}/${vision.toLowerCase()}_mv_bg.png`}
+										src={`/${vision.toLowerCase()}_mv_bg.png`}
 										alt={`character_bg`}
 										height={450}
 										width={600}
@@ -110,6 +103,7 @@ export default async function Character({ params }) {
 									className={styles.splash_img}
 									src={basicInfo.header_img_url}
 									alt={`character_picture`}
+									loading={'eager'}
 									height={450}
 									width={600}
 									quality={80}

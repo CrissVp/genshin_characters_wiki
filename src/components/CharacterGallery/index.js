@@ -7,7 +7,6 @@ import TableComponent from '../TableComponent';
 import ButtonsList from '../ButtonsList';
 
 import styles from './styles.module.scss';
-import { basePath } from '../../../next.config';
 
 export default function CharacterGallery({ data, vision }) {
 	const galleryPics = useRef(null);
@@ -88,7 +87,7 @@ export default function CharacterGallery({ data, vision }) {
 												height={450}
 												alt='Gallery_Pic'
 												placeholder='blur'
-												blurDataURL={`${basePath}/load_img.png`}
+												blurDataURL={'/load_img.png'}
 											/>
 										</div>
 										<div className={styles.gallery_desc}>

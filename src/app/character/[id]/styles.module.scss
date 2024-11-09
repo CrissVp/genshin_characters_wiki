@@ -11,7 +11,7 @@
 		overflow-y: auto;
 		position: relative;
 		justify-content: center;
-		font-family: 'Acme', sans-serif;
+		font-family: var(--ff-acme);
 
 		.content {
 			min-height: 100%;
@@ -85,7 +85,7 @@
 						p {
 							font-weight: 400;
 							color: hsla(0, 0%, 100%, 0.65);
-							font-family: 'Do Hyeon', sans-serif;
+							font-family: var(--ff-do-hyeon);
 						}
 					}
 
@@ -169,10 +169,6 @@
 					.character_splash {
 						width: 450px;
 						height: 450px;
-
-						.splash_img {
-							object-fit: contain;
-						}
 					}
 				}
 
@@ -361,7 +357,6 @@
 						.splash_img {
 							z-index: 3;
 							width: 520px;
-							object-fit: contain;
 						}
 
 						&::after {

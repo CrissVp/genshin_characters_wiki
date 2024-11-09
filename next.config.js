@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: 'export',
-	basePath: '/genshin_characters_wiki',
 	images: {
 		unoptimized: true,
 		remotePatterns: [

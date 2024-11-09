@@ -1,11 +1,11 @@
-import { CharactersModel } from '@/models/CharactersModel.js';
+import { getAll } from '@/services/characters';
 
 import Characters from '@/components/Characters/index.js';
 import Logo from '@/components/Logo';
 import styles from './page.module.css';
 
 export default async function Home() {
-	const characters = await CharactersModel.getAll();
+	const characters = await getAll();
 
 	return (
 		<>

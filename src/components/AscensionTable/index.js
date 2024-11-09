@@ -7,7 +7,6 @@ import TableComponent from '../TableComponent';
 import ButtonsList from '../ButtonsList';
 
 import styles from './styles.module.scss';
-import { basePath } from '../../../next.config';
 
 export default function AscensionTable({ data, vision }) {
 	const buttonsContainer = useRef(null);
@@ -72,7 +71,7 @@ export default function AscensionTable({ data, vision }) {
 										height={20}
 										width={20}
 										alt='Material_Pic'
-										src={mat.icon_url || `${basePath}/load_img.png`}
+										src={mat.icon_url || '/load_img.png'}
 									/>
 									<span>{mat.name}</span>
 									<span>x {mat.amount}</span>

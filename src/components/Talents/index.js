@@ -7,7 +7,6 @@ import TableComponent from '../TableComponent';
 import TalentButton from '../TalentButton';
 
 import styles from './styles.module.scss';
-import { basePath } from '../../../next.config';
 
 export default function Talents({ data, vision }) {
 	const [page, setPage] = useState(data.list[0]);
@@ -28,7 +27,7 @@ export default function Talents({ data, vision }) {
 							width={70}
 							height={70}
 							alt='Talent_Icon'
-							src={item.icon_url || `${basePath}/load_img.png`}
+							src={item.icon_url || '/load_img.png'}
 						/>
 					</TalentButton>
 				))}
@@ -42,7 +41,7 @@ export default function Talents({ data, vision }) {
 							height={180}
 							alt='Talent_Pic'
 							placeholder='blur'
-							blurDataURL={`${basePath}/load_img.png`}
+							blurDataURL={'/load_img.png'}
 						/>
 					</div>
 				)}

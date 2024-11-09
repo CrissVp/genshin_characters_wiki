@@ -9,12 +9,17 @@
 	--hydro-bg: #15315c;
 	--anemo-bg: #153434;
 	--dendro-bg: #183d12;
+
+	--ff-acme: 'Acme', sans-serif;
+	--ff-do-hyeon: 'Do Hyeon', sans-serif;
+	--ff-tahoma: Tahoma, Helvetica, Arial, sans-serif;
 }
 
 * {
 	box-sizing: content-box;
 	padding: 0;
 	margin: 0;
+	/* outline: 1px solid red; */
 }
 
 html,

@@ -1,6 +1,5 @@
 'use client';
 
-import { basePath } from '../../../next.config';
 import { useState } from 'react';
 import Image from 'next/image';
 
@@ -25,11 +24,11 @@ export default function Filters({ filters, setFilters }) {
 				onClick={(e) => e.stopPropagation()}
 			>
 				<button className={styles.filter_button} onClick={() => setVisible(!visible)}>
-					<Image src={`${basePath}/filter.svg`} height={40} width={40} />
+					<Image src={'/filter.svg'} height={40} width={40} />
 				</button>
 				<div className={`${styles.filters} ${visible ? styles.visible : styles.hidden}`}>
 					<div className={styles.search_input}>
-						<Image height={15} width={15} src={`${basePath}/magnifing_glass.svg`} />
+						<Image height={15} width={15} src={'/magnifing_glass.svg'} />
 						<input
 							type='text'
 							onChange={(e) =>
@@ -46,6 +45,7 @@ export default function Filters({ filters, setFilters }) {
 							{elements.map((element) => (
 								<li key={`filter_${element}`}>
 									<button
+										title={element}
 										onClick={() =>
 											setFilters((current) => ({
 												...current,
@@ -65,6 +65,7 @@ export default function Filters({ filters, setFilters }) {
 							{wepons.map((weapon) => (
 								<li key={`filter_${weapon}`}>
 									<button
+										title={weapon}
 										onClick={() =>
 											setFilters((current) => ({
 												...current,
@@ -87,6 +88,7 @@ export default function Filters({ filters, setFilters }) {
 									key={`filter_${rarity}`}
 								>
 									<button
+										title={rarity}
 										onClick={() =>
 											setFilters((current) => ({
 												...current,
@@ -100,10 +102,6 @@ export default function Filters({ filters, setFilters }) {
 								</li>
 							))}
 						</ul>
-					</div>
-					<div>
-						<span>More filters</span>
-						{/* <ul></ul> */}
 					</div>
 				</div>
 			</div>

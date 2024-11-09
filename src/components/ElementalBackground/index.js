@@ -1,4 +1,3 @@
-import { basePath } from '../../../next.config';
 import styles from './styles.module.scss';
 
 const BG_PATHS = {
@@ -17,7 +16,7 @@ export default function ElementalBackground({ bg }) {
 	return (
 		<div className={styles.background}>
 			<video autoPlay loop muted playsInline>
-				<source src={`${basePath}/${BG_PATHS[bg]}`} type='video/webm' />
+				<source src={`/${BG_PATHS[bg]}`} type='video/webm' />
 			</video>
 		</div>
 	);

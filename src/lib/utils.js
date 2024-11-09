@@ -1,6 +1,17 @@
-export const createRequest = async (url, options) => {
+export const request = async (url, options) => {
 	try {
-		const res = await fetch(url, options);
+		const res = await fetch(
+			url,
+			options && {
+				headers: {
+					'x-rpc-language': 'en-us',
+					Referer: 'https://wiki.hoyolab.com/'
+				},
+				method: options.method,
+				body: options.body
+			}
+		);
+
 		return await res.json();
 	} catch (err) {
 		console.log(err);
