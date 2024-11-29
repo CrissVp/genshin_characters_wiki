@@ -57,7 +57,7 @@ function CharacterCard({ data }) {
 	const rarity = data.filter_values.character_rarity?.values[0];
 
 	return (
-		<Link href={`/character/${data.entry_page_id}`} target='_blank'>
+		<Link href={`/character/${data.entry_page_id}`} prefetch={false} target='_blank'>
 			<div className={styles.character_card}>
 				<div className={`${styles.character_img_container} bg_${rarity}`}>
 					<Image
